@@ -1,0 +1,41 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Only this Google account can list, create, rename, or delete families.
+    // Keep in sync with ADMIN_EMAIL in src/lib/admin.js.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'egabel@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+
+    function familyExists(code) {
+      return exists(/databases/$(database)/documents/families/$(code));
+    }
+
+    // The family code is the document id and works like a password: anyone who
+    // knows a code can open that family, but codes can't be listed or guessed
+    // from the database.
+    //
+    // TODO: A script could still try every 4-digit code. Use 6+ digit codes for
+    // families outside your own, and consider App Check before sharing widely.
+    match /families/{code} {
+      allow get: if true;
+      allow list, create, update, delete: if isAdmin();
+
+      match /kids/{kidId} {
+        allow read, write: if familyExists(code) || isAdmin();
+
+        match /cards/{cardId} {
+          allow read, write: if familyExists(code) || isAdmin();
+        }
+      }
+
+      match /customCards/{cardId} {
+        allow read, write: if familyExists(code) || isAdmin();
+      }
+    }
+  }
+}

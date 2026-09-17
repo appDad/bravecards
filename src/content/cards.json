@@ -1,0 +1,506 @@
+{
+  "morning": [
+    {
+      "id": "morning-weekend",
+      "situation": "It's Monday morning",
+      "line": "Did you do anything fun this weekend?"
+    },
+    {
+      "id": "morning-new-kid",
+      "situation": "There's a new kid",
+      "line": "I'm ___, what's your name?",
+      "followUp": "Where'd you move from?"
+    },
+    {
+      "id": "morning-shirt",
+      "situation": "A kid is wearing a team or character shirt",
+      "line": "You like ___? Me too."
+    },
+    {
+      "id": "morning-group-talking",
+      "situation": "A group is already talking",
+      "line": "Wait, what happened?",
+      "tip": "Listen for about 10 seconds first, then jump in."
+    },
+    {
+      "id": "morning-wave",
+      "situation": "You see a kid you know walking in",
+      "line": "Hey! Morning.",
+      "tip": "A wave and a smile count too."
+    },
+    {
+      "id": "morning-new-stuff",
+      "situation": "Someone has new shoes, a haircut, or a new backpack",
+      "line": "Ooh, is that new? It looks cool."
+    },
+    {
+      "id": "morning-tired",
+      "situation": "Someone looks really tired",
+      "line": "Rough morning?",
+      "followUp": "Same. I could barely get up."
+    },
+    {
+      "id": "morning-line",
+      "situation": "You're waiting in line to go in",
+      "line": "Did you watch anything good last night?"
+    },
+    {
+      "id": "morning-back-sick",
+      "situation": "A kid was out sick yesterday",
+      "line": "Hey, you're back! Feeling better?"
+    },
+    {
+      "id": "morning-after-break",
+      "situation": "It's the first day back after a break",
+      "line": "How was your break?",
+      "followUp": "Did you go anywhere?"
+    }
+  ],
+  "class": [
+    {
+      "id": "class-homework",
+      "situation": "A kid you sort of know sits near you",
+      "line": "Hey, did you do the math homework?"
+    },
+    {
+      "id": "class-drawing",
+      "situation": "Someone is drawing or reading",
+      "line": "What's that about?",
+      "followUp": "How'd you get into that?"
+    },
+    {
+      "id": "class-partner",
+      "situation": "The teacher says to find a partner",
+      "line": "Want to be partners?",
+      "tip": "Pick someone who's still looking. They're hoping someone asks."
+    },
+    {
+      "id": "class-stuck",
+      "situation": "You're stuck on a question",
+      "line": "How did you get number 4?"
+    },
+    {
+      "id": "class-borrow",
+      "situation": "You need a pencil or an eraser",
+      "line": "Can I borrow a pencil? I'll give it back."
+    },
+    {
+      "id": "class-lend",
+      "situation": "Someone near you needs something you have",
+      "line": "Here, you can use mine."
+    },
+    {
+      "id": "class-group-idea",
+      "situation": "You're in a group project and have an idea",
+      "line": "What if we tried ___?",
+      "followUp": "What do you all think?"
+    },
+    {
+      "id": "class-good-answer",
+      "situation": "Someone gives a great answer or presentation",
+      "line": "That was really good. How did you think of that?"
+    },
+    {
+      "id": "class-after-test",
+      "situation": "Class just finished a test",
+      "line": "How do you think you did?",
+      "followUp": "That last one was so hard."
+    },
+    {
+      "id": "class-split-jobs",
+      "situation": "Your group is quiet and nobody's starting",
+      "line": "Should we split up the jobs?",
+      "tip": "Offer to take one job first. It gets everyone going."
+    }
+  ],
+  "recess": [
+    {
+      "id": "recess-next-round",
+      "situation": "A group is playing a game",
+      "line": "Can I play next round?"
+    },
+    {
+      "id": "recess-watching",
+      "situation": "You want to join a game that already started",
+      "line": "That looks fun. Can I be on a team?",
+      "tip": "Stand close and watch for a minute first so you know the game."
+    },
+    {
+      "id": "recess-alone",
+      "situation": "A kid is by themselves at recess",
+      "line": "Want to play ___ with me?"
+    },
+    {
+      "id": "recess-ball",
+      "situation": "Their ball rolls over to you",
+      "line": "Here you go!",
+      "followUp": "What are you guys playing?"
+    },
+    {
+      "id": "recess-start-game",
+      "situation": "You want to start a game",
+      "line": "Who wants to play tag?",
+      "tip": "Ask a few kids at once. It makes it easy to say yes."
+    },
+    {
+      "id": "recess-rules",
+      "situation": "Kids are arguing about the rules",
+      "line": "Let's just redo that one.",
+      "tip": "A redo is fair and gets the game going again."
+    },
+    {
+      "id": "recess-good-play",
+      "situation": "Someone makes a great play",
+      "line": "Nice one! How did you do that?"
+    },
+    {
+      "id": "recess-lost",
+      "situation": "Your team loses",
+      "line": "Good game. Rematch tomorrow?"
+    },
+    {
+      "id": "recess-break",
+      "situation": "You want to take a break from the game",
+      "line": "I'm gonna take a break. Save my spot?"
+    }
+  ],
+  "lunch": [
+    {
+      "id": "lunch-sit-here",
+      "situation": "A kid is sitting alone at lunch",
+      "line": "Can I sit here?",
+      "followUp": "What'd you bring?"
+    },
+    {
+      "id": "lunch-same",
+      "situation": "They like something you like",
+      "line": "Same. Which one's your favorite?"
+    },
+    {
+      "id": "lunch-story",
+      "situation": "They're telling you a story",
+      "line": "No way. What happened next?"
+    },
+    {
+      "id": "lunch-last-word",
+      "situation": "You don't know what to say",
+      "line": "Repeat their last word as a question, like \"Minecraft?\"",
+      "tip": "They'll usually keep talking."
+    },
+    {
+      "id": "lunch-recess",
+      "situation": "Lunch is ending",
+      "line": "What are you doing at recess?"
+    },
+    {
+      "id": "lunch-new-food",
+      "situation": "Someone has a food you've never seen",
+      "line": "What's that? Is it good?"
+    },
+    {
+      "id": "lunch-unknown-show",
+      "situation": "They talk about a show or game you don't know",
+      "line": "What's it about? Should I try it?"
+    },
+    {
+      "id": "lunch-friday",
+      "situation": "It's Friday",
+      "line": "Doing anything fun this weekend?"
+    },
+    {
+      "id": "lunch-seat-taken",
+      "situation": "Your usual seat is taken",
+      "line": "Mind if I squeeze in here?"
+    },
+    {
+      "id": "lunch-quiet-table",
+      "situation": "Everyone at the table is quiet",
+      "line": "Random question: would you rather fly or be invisible?",
+      "tip": "A would-you-rather question gets everyone talking."
+    }
+  ],
+  "after-school": [
+    {
+      "id": "after-hobby",
+      "situation": "They mention a hobby",
+      "line": "Oh cool, how'd you get into that?"
+    },
+    {
+      "id": "after-club",
+      "situation": "You're at a club or practice and don't know anyone",
+      "line": "Is this your first time here too?"
+    },
+    {
+      "id": "after-pickup",
+      "situation": "You're waiting for pickup next to a kid",
+      "line": "What are you doing after this?"
+    },
+    {
+      "id": "after-teammate",
+      "situation": "A teammate does something great at practice",
+      "line": "Nice! Can you show me how you did that?"
+    },
+    {
+      "id": "after-hang-out",
+      "situation": "You want to hang out outside of school",
+      "line": "Want to hang out this weekend? I can ask my parents.",
+      "tip": "Then a grown-up can text their grown-up."
+    },
+    {
+      "id": "after-neighbor",
+      "situation": "A kid from school lives near you",
+      "line": "You live here too? Want to ride bikes sometime?"
+    },
+    {
+      "id": "after-coach",
+      "situation": "You didn't understand what the coach said",
+      "line": "Sorry, can you show me that again?"
+    },
+    {
+      "id": "after-carpool",
+      "situation": "You're in a carpool with a kid",
+      "line": "What was the best part of your day?"
+    },
+    {
+      "id": "after-same-game",
+      "situation": "A kid plays the same video game as you",
+      "line": "What level are you on?",
+      "followUp": "Want to play together sometime?"
+    }
+  ],
+  "goodbye": [
+    {
+      "id": "bye-grab-stuff",
+      "situation": "You need to leave",
+      "line": "Okay, I'm gonna go grab my stuff. See you."
+    },
+    {
+      "id": "bye-short",
+      "situation": "You need to leave fast",
+      "line": "I gotta go, bye."
+    },
+    {
+      "id": "bye-tomorrow",
+      "situation": "You want to see them again",
+      "line": "Want to sit together tomorrow?"
+    },
+    {
+      "id": "bye-bell",
+      "situation": "The last bell rings",
+      "line": "See you tomorrow!"
+    },
+    {
+      "id": "bye-friday",
+      "situation": "It's Friday afternoon",
+      "line": "Have a good weekend!"
+    },
+    {
+      "id": "bye-had-fun",
+      "situation": "You had fun with someone",
+      "line": "That was fun. Let's do it again."
+    },
+    {
+      "id": "bye-good-luck",
+      "situation": "They told you about something coming up",
+      "line": "Good luck at your game!",
+      "tip": "Remembering what they told you makes them feel noticed."
+    },
+    {
+      "id": "bye-mid-story",
+      "situation": "You have to leave in the middle of their story",
+      "line": "I have to go, but tell me the rest tomorrow!"
+    }
+  ],
+  "brain-freeze": [
+    {
+      "id": "freeze-question",
+      "situation": "Your mind goes blank",
+      "line": "Ask a question about anything they just said."
+    },
+    {
+      "id": "freeze-compliment",
+      "situation": "Your mind goes blank",
+      "line": "Compliment one thing."
+    },
+    {
+      "id": "freeze-forgot",
+      "situation": "Your mind goes blank",
+      "line": "Hm, I forgot what I was gonna say.",
+      "tip": "Then smile. It happens to everyone."
+    },
+    {
+      "id": "freeze-what-about-you",
+      "situation": "They asked you something and you answered",
+      "line": "What about you?",
+      "tip": "Bounce the question back. It works almost every time."
+    },
+    {
+      "id": "freeze-long-pause",
+      "situation": "There is a long, quiet pause",
+      "line": "So what's your favorite thing to do?"
+    },
+    {
+      "id": "freeze-didnt-hear",
+      "situation": "You didn't hear what they said",
+      "line": "Sorry, what did you say?"
+    },
+    {
+      "id": "freeze-dont-know",
+      "situation": "They talk about something you don't know",
+      "line": "I don't know that one. What is it?",
+      "tip": "Not knowing is fine. People like explaining."
+    },
+    {
+      "id": "freeze-nervous",
+      "situation": "Your heart is pounding",
+      "line": "Take one slow breath, then just say \"Hey.\"",
+      "tip": "Short and simple is plenty."
+    }
+  ],
+  "tricky": [
+    {
+      "id": "tricky-said-no",
+      "situation": "You asked to join and they said no",
+      "line": "Okay, maybe next time.",
+      "tip": "Then go find someone else. It's not about you."
+    },
+    {
+      "id": "tricky-interrupted",
+      "situation": "You interrupted someone by accident",
+      "line": "Oops, sorry. Go ahead."
+    },
+    {
+      "id": "tricky-joke-flop",
+      "situation": "Your joke didn't land",
+      "line": "Okay, that one was bad.",
+      "tip": "Laughing at yourself makes it no big deal."
+    },
+    {
+      "id": "tricky-disagree",
+      "situation": "You don't agree with someone",
+      "line": "I kind of think ___, but that's cool."
+    },
+    {
+      "id": "tricky-left-out",
+      "situation": "Kids are making plans in front of you",
+      "line": "That sounds fun. Can I come too?"
+    },
+    {
+      "id": "tricky-upset",
+      "situation": "Someone looks upset",
+      "line": "Are you okay?",
+      "followUp": "Want to sit with me?"
+    },
+    {
+      "id": "tricky-hurt-feelings",
+      "situation": "You said something that hurt someone's feelings",
+      "line": "Sorry, I didn't mean it like that."
+    },
+    {
+      "id": "tricky-teased",
+      "situation": "Someone teases you",
+      "line": "Okay. Anyway...",
+      "tip": "A calm, bored answer takes the fun out of it. If it keeps happening, tell a grown-up."
+    },
+    {
+      "id": "tricky-forgot-name",
+      "situation": "You forgot someone's name",
+      "line": "Sorry, I forgot your name. What is it again?"
+    },
+    {
+      "id": "tricky-dropped-stuff",
+      "situation": "You tripped or dropped all your stuff",
+      "line": "Ha. Smooth, right?",
+      "tip": "Smile and keep going. Everyone forgets about it fast."
+    }
+  ],
+  "stand-up": [
+    {
+      "id": "stand-rough-play",
+      "situation": "Someone is playing too rough",
+      "line": "I don't like the way you're playing. Stop.",
+      "tip": "Say it loud, stand tall, and look at them."
+    },
+    {
+      "id": "stand-dont-want",
+      "situation": "Kids want you to do something you don't want to do",
+      "line": "I don't want to do that.",
+      "followUp": "I'm gonna do something else.",
+      "tip": "You don't need a reason. No is enough."
+    },
+    {
+      "id": "stand-unfair-rules",
+      "situation": "Someone keeps changing the rules so they win",
+      "line": "That's not fair. We already said the rules."
+    },
+    {
+      "id": "stand-grabbed",
+      "situation": "Someone grabs something of yours",
+      "line": "Hey, that's mine. Give it back, please."
+    },
+    {
+      "id": "stand-cut-line",
+      "situation": "Someone cuts in front of you in line",
+      "line": "Hey, I was here first."
+    },
+    {
+      "id": "stand-mean-joke",
+      "situation": "Kids are laughing at a joke about you",
+      "line": "That's not funny to me. Stop."
+    },
+    {
+      "id": "stand-cant-play",
+      "situation": "A kid says you can't play, for no reason",
+      "line": "Everybody's allowed to play.",
+      "tip": "If they still won't let you, find a better game and tell a grown-up."
+    },
+    {
+      "id": "stand-bossy",
+      "situation": "One kid always decides everything",
+      "line": "It's my turn to pick."
+    },
+    {
+      "id": "stand-personal-space",
+      "situation": "Someone keeps poking or touching you",
+      "line": "Don't touch me. I mean it."
+    },
+    {
+      "id": "stand-name-calling",
+      "situation": "Someone calls you a name",
+      "line": "That's not my name. Don't call me that."
+    },
+    {
+      "id": "stand-talked-over",
+      "situation": "People keep talking over you",
+      "line": "Wait, I wasn't done."
+    },
+    {
+      "id": "stand-copying",
+      "situation": "Someone keeps copying your work",
+      "line": "Please stop copying my paper."
+    },
+    {
+      "id": "stand-changed-mind",
+      "situation": "You said yes, but now you want to say no",
+      "line": "Actually, I changed my mind. I don't want to.",
+      "tip": "You're allowed to change your mind."
+    },
+    {
+      "id": "stand-for-friend",
+      "situation": "Someone is being mean to another kid",
+      "line": "Hey, cut it out. That's not cool.",
+      "tip": "Standing next to the kid who got picked on helps too."
+    },
+    {
+      "id": "stand-not-a-friend",
+      "situation": "Someone says \"Do it or you're not my friend\"",
+      "line": "Real friends don't say that. I'm not doing it."
+    },
+    {
+      "id": "stand-get-help",
+      "situation": "You said stop and they didn't",
+      "line": "I said stop. I'm getting a grown-up.",
+      "tip": "Getting help is brave. It is not tattling."
+    }
+  ]
+}

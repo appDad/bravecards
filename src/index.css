@@ -1,0 +1,348 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Lilita One', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-ink: #16183a;
+  --color-ink-soft: #50567f;
+  --color-sky: #e4efff;
+  --color-sky-dot: #c9dbff;
+  --color-gold: #ffc833;
+  --color-go: #1fbf6a;
+  --color-flame: #ff7a1a;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background-color: var(--color-sky);
+}
+
+body {
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  background-image: radial-gradient(var(--color-sky-dot) 1.6px, transparent 1.6px);
+  background-size: 22px 22px;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+@layer components {
+  /* Chunky game button. Set --c for the face color; the shade is mixed from it. */
+  .btn3d {
+    --c: #ffffff;
+    --shade: color-mix(in srgb, var(--c) 70%, #16183a);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 56px;
+    padding: 0 1.25rem;
+    border-radius: 20px;
+    background: var(--c);
+    box-shadow: 0 5px 0 var(--shade);
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    letter-spacing: 0.01em;
+    transition:
+      transform 90ms ease-out,
+      box-shadow 90ms ease-out;
+    user-select: none;
+  }
+
+  .btn3d:active:not(:disabled) {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 var(--shade);
+  }
+
+  .btn3d:disabled {
+    opacity: 0.6;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    height: 44px;
+    padding: 0 0.85rem 0 0.6rem;
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 3px 0 rgb(22 24 58 / 0.14);
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+
+  .avatar {
+    --shade: color-mix(in srgb, var(--c) 68%, #16183a);
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--c);
+    box-shadow:
+      inset 0 -6px 0 rgb(0 0 0 / 0.12),
+      0 4px 0 var(--shade);
+    line-height: 1;
+  }
+
+  /* Category tiles: squish on press, stagger in on first load. */
+  .tile {
+    --shade: color-mix(in srgb, var(--c) 68%, #16183a);
+    background: var(--c);
+    box-shadow: 0 6px 0 var(--shade);
+    border-radius: 24px;
+    transition:
+      transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 220ms ease;
+    user-select: none;
+  }
+
+  .tile:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 0 var(--shade);
+    transition-duration: 80ms;
+  }
+
+  /* `backwards` so the :active squish still works after the entrance ends. */
+  .tile-stagger {
+    animation: tile-in 520ms cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+    animation-delay: calc(var(--i) * 70ms + 60ms);
+  }
+
+  .face {
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    box-shadow:
+      0 8px 0 rgb(22 24 58 / 0.12),
+      0 20px 40px rgb(22 24 58 / 0.14);
+  }
+
+  .stamp {
+    position: absolute;
+    top: 26px;
+    z-index: 2;
+    padding: 2px 12px;
+    border: 4px solid currentColor;
+    border-radius: 14px;
+    background: rgb(255 255 255 / 0.92);
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+}
+
+/* ---- Card flip: perspective lives on the swipe layer, overshoot comes from the curve. ---- */
+
+.flipper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 720ms cubic-bezier(0.3, 1.45, 0.5, 1);
+}
+
+.flipper.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.face-back {
+  transform: rotateY(180deg);
+}
+
+.card-enter {
+  animation: card-enter 420ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ---- Keyframes ---- */
+
+@keyframes tile-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.88);
+  }
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.88);
+  }
+}
+
+.confetti-piece {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  animation: confetti 1300ms both;
+}
+
+@keyframes confetti {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.1, 0.8, 0.3, 1);
+  }
+  55% {
+    transform: translate(var(--x), var(--y)) scale(1) rotate(calc(var(--r) * 0.6));
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.5);
+  }
+  100% {
+    transform: translate(var(--x), calc(var(--y) + 170px)) rotate(var(--r));
+    opacity: 0;
+  }
+}
+
+.celebrate-pop {
+  animation: celebrate 1800ms both;
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  16% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+  26% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-24px) scale(0.92);
+    opacity: 0;
+  }
+}
+
+.pulse-pop {
+  animation: pulse-pop 560ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pulse-pop {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.28);
+    background: var(--color-gold);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.flame-wobble {
+  transform-box: fill-box;
+  transform-origin: 50% 90%;
+  animation: wobble 2.2s ease-in-out infinite;
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(-7deg) scaleY(1);
+  }
+  50% {
+    transform: rotate(7deg) scaleY(1.08);
+  }
+}
+
+.shake {
+  animation: shake 380ms ease-in-out;
+}
+
+@keyframes shake {
+  20% {
+    transform: translateX(-12px);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+.sheet-backdrop {
+  animation: fade-in 200ms ease-out both;
+}
+
+.sheet-panel {
+  animation: sheet-up 380ms cubic-bezier(0.22, 1.25, 0.4, 1) both;
+}
+
+.pop-in {
+  animation: pop-in 560ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-8deg);
+  }
+}
+
+/* ---- Reduced motion: no flying, spinning, or wobbling. ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+
+  .confetti-piece {
+    display: none;
+  }
+
+  .flame-wobble,
+  .celebrate-pop {
+    animation: none !important;
+  }
+}
