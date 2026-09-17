@@ -1,12 +1,10 @@
 import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth'
 import { app } from '../firebase'
 
-// Must match the email in firestore.rules, which is what actually enforces this.
-export const ADMIN_EMAIL = 'egabel@gmail.com'
+// Who counts as the admin is decided only by firestore.rules on the backend. The app never
+// knows the admin's email: it signs in, asks for the family list, and the database says yes or no.
 
 export const auth = getAuth(app)
-
-export const isAdminUser = (user) => user?.email === ADMIN_EMAIL && user.emailVerified
 
 export function signInAdmin() {
   const provider = new GoogleAuthProvider()

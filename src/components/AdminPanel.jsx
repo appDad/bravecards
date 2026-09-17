@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from 'firebase/auth'
-import { useEffect, useState } from 'react'
-import { auth, authErrorMessage, isAdminUser, signInAdmin, signOutAdmin } from '../lib/admin'
+import { useEffect, useRef, useState } from 'react'
+import { auth, authErrorMessage, signInAdmin, signOutAdmin } from '../lib/admin'
 import { createFamily, deleteFamily, renameFamily, subscribeFamilies } from '../lib/store'
 import { MAX_CODE, MIN_CODE } from './CodePad'
 import Sheet from './Sheet'
@@ -56,40 +56,67 @@ export default function AdminPanel({ onExit, onOpenFamily }) {
         </div>
       )}
 
-      {user && !isAdminUser(user) && (
-        <div className="mt-10 rounded-[28px] bg-white p-6 text-center">
-          <p className="font-display text-2xl">Not an admin account</p>
-          <p className="mt-2 text-ink-soft">
-            You're signed in as {user.email}, which can't manage family codes.
-          </p>
-        </div>
-      )}
-
       {error && <p className="mt-4 rounded-2xl bg-rose-50 p-3 text-center font-bold text-rose-700">{error}</p>}
 
-      {isAdminUser(user) && <Families onOpenFamily={onOpenFamily} />}
+      {user && <Families key={user.uid} email={user.email} onOpenFamily={onOpenFamily} />}
     </div>
   )
 }
 
-function Families({ onOpenFamily }) {
-  const [families, setFamilies] = useState(null)
-  const [loadError, setLoadError] = useState(null)
+// Any signed-in account lands here. The database decides: an admin gets the family list,
+// anyone else gets "permission-denied" and sees a short message instead.
+function Families({ email, onOpenFamily }) {
+  const [access, setAccess] = useState('checking') // 'checking' | 'admin' | 'denied' | 'offline'
+  const [families, setFamilies] = useState([])
   const [name, setName] = useState('')
   const [code, setCode] = useState(randomCode)
   const [formError, setFormError] = useState(null)
   const [saving, setSaving] = useState(false)
   const [renaming, setRenaming] = useState(null)
   const [deleting, setDeleting] = useState(null)
+  const confirmed = useRef(false)
 
-  useEffect(
-    () =>
-      subscribeFamilies(setFamilies, (err) => {
+  useEffect(() => {
+    const unsubscribe = subscribeFamilies(
+      (list, fromCache) => {
+        // A cached copy isn't proof of access; wait for the server to answer once.
+        if (fromCache && !confirmed.current) return
+        confirmed.current = true
+        setFamilies(list)
+        setAccess('admin')
+      },
+      (err) => {
         console.error(err)
-        setLoadError('Could not load families. Are the Firestore rules deployed?')
-      }),
-    [],
-  )
+        setAccess(err.code === 'permission-denied' ? 'denied' : 'offline')
+      },
+    )
+    // Firestore quietly retries while offline instead of erroring, so say so after a while.
+    // The server's answer still switches to 'admin' or 'denied' whenever it arrives.
+    const timer = setTimeout(() => {
+      if (!confirmed.current) setAccess((a) => (a === 'checking' ? 'offline' : a))
+    }, 10000)
+    return () => {
+      clearTimeout(timer)
+      unsubscribe()
+    }
+  }, [])
+
+  if (access === 'checking') return <p className="mt-10 text-center text-ink-soft">Checking access…</p>
+  if (access === 'denied') {
+    return (
+      <div className="mt-10 rounded-[28px] bg-white p-6 text-center">
+        <p className="font-display text-2xl">Not an admin account</p>
+        <p className="mt-2 text-ink-soft">You're signed in as {email}, which can't manage family codes.</p>
+      </div>
+    )
+  }
+  if (access === 'offline') {
+    return (
+      <p className="mt-10 rounded-2xl bg-white p-4 text-center">
+        Couldn't reach the database. Check the internet connection and try again.
+      </p>
+    )
+  }
 
   const validCode = new RegExp(`^\\d{${MIN_CODE},${MAX_CODE}}$`).test(code)
 
@@ -159,11 +186,9 @@ function Families({ onOpenFamily }) {
       </form>
 
       <h2 className="mt-8 font-display text-2xl">Families</h2>
-      {loadError && <p className="mt-2 font-bold text-rose-600">{loadError}</p>}
-      {families === null && !loadError && <p className="mt-2 text-ink-soft">Loading…</p>}
-      {families?.length === 0 && <p className="mt-2 text-ink-soft">No families yet.</p>}
+      {families.length === 0 && <p className="mt-2 text-ink-soft">No families yet.</p>}
       <ul className="mt-3 flex flex-col gap-3">
-        {families?.map((family) => (
+        {families.map((family) => (
           <li key={family.id} className="rounded-2xl bg-white p-4">
             <div className="flex items-baseline justify-between gap-3">
               <p className="min-w-0 truncate text-lg font-bold">{family.name}</p>

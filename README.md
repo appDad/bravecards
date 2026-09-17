@@ -14,7 +14,7 @@ Built with React + Vite + Tailwind + Firebase (Firestore and Hosting). Plain Jav
 - **I said it for real! +5.** The big celebration. If the card was a mission, the mission is complete.
 - **Say it your way.** Long-press the back of a card (or tap the pencil) to rewrite the line in the kid's own words.
 - **Grown-ups settings** (bottom of the kid picker). Kids know the family code, so settings ask for math built on it, like *(family code × 37) + 58*: use a calculator and tap the last 2 digits of the answer. The numbers change every time, and 3 wrong answers lock the pad for 60 seconds. Inside, add, edit, or remove kids, and write your own cards. Family cards show up in the decks for every kid in that family.
-- **Admin** (link at the bottom of the family code screen). Sign in with Google as egabel@gmail.com to create, rename, and delete family codes.
+- **Admin** (link at the bottom of the family code screen). Sign in with Google to create, rename, and delete family codes. Only the admin account named in `firestore.rules` gets in; the database checks it, not the app.
 
 ## Setup (Windows CMD)
 
@@ -112,7 +112,7 @@ families/{code}/customCards/{cardId}          categoryId, situation, line, follo
 
 - The family code is the document id and works like a password. The rules in `firestore.rules` let anyone who knows a code open that family, but nobody can list codes. Only the admin Google account can create or delete families.
 - A 4-digit code could be guessed by a script. Use 6+ digit codes for families outside your own (the admin page suggests 6-digit random codes).
-- The admin email lives in two places that must match: `firestore.rules` and `src/lib/admin.js`.
+- The admin email lives only in `firestore.rules`, which runs on Firebase's servers. The app never contains it: after sign-in it asks for the family list and the database allows or denies it. To change the admin, edit `firestore.rules` and run `firebase deploy --only firestore:rules`.
 
 ## Project layout
 

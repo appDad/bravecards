@@ -44,9 +44,17 @@ export async function familyExists(code) {
 export const subscribeFamily = (code, onData, onError) =>
   onSnapshot(familyRef(code), (snap) => onData(snap.exists() ? withId(snap) : null, snap.metadata.fromCache), onError)
 
-// Admin only (enforced by Firestore rules).
+// Admin only (enforced by Firestore rules). onData(families, fromCache); a non-admin gets
+// onError with code 'permission-denied', which is how the app learns who is an admin.
+// includeMetadataChanges: the server's confirmation of an already-cached list changes only
+// fromCache, and without this option Firestore wouldn't send that snapshot at all.
 export const subscribeFamilies = (onData, onError) =>
-  onSnapshot(query(collection(db, 'families'), orderBy('createdAt')), (snap) => onData(snap.docs.map(withId)), onError)
+  onSnapshot(
+    query(collection(db, 'families'), orderBy('createdAt')),
+    { includeMetadataChanges: true },
+    (snap) => onData(snap.docs.map(withId), snap.metadata.fromCache),
+    onError,
+  )
 
 export async function createFamily(code, name) {
   if (await familyExists(code)) throw new Error('That code is already in use.')
