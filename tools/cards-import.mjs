@@ -95,7 +95,13 @@ if (missingColumns.length) fail(`Missing column(s): ${missingColumns.join(', ')}
 
 const deckByKey = new Map(decks.flatMap((d) => [[key(d.id), d.id], [key(d.name), d.id]]))
 const cell = (cells, name) => (col(name) === -1 ? '' : clean(cells[col(name)]))
-const contentKeyOf = (cells) => `${deckByKey.get(key(cell(cells, 'deck')))}|${key(cell(cells, 'situation'))}|${key(cell(cells, 'line'))}`
+const contentKey = (deck, situation, line) => `${deck}|${key(situation)}|${key(line)}`
+const contentKeyOf = (cells) =>
+  contentKey(deckByKey.get(key(cell(cells, 'deck'))), cell(cells, 'situation'), cell(cells, 'line'))
+
+// A row with no id whose text exactly matches a card already in the app is that card, so it
+// keeps its id (and the kids' progress). Re-importing the same file then changes nothing.
+const idByContent = new Map([...beforeById.values()].map((c) => [contentKey(c.deck, c.situation, c.line), c.id]))
 
 const errors = []
 const warnings = []
@@ -143,16 +149,19 @@ rows.slice(1).forEach((cells, i) => {
     }
   }
 
-  const contentKey = contentKeyOf(cells)
-  if (!id && contentWithId.has(contentKey)) {
-    warnings.push(`Row ${rowNumber}: same as the existing card on row ${contentWithId.get(contentKey)}, skipped.`)
+  const rowKey = contentKeyOf(cells)
+  if (!id && contentWithId.has(rowKey)) {
+    warnings.push(`Row ${rowNumber}: same as the existing card on row ${contentWithId.get(rowKey)}, skipped.`)
     return
   }
-  if (seenContent.has(contentKey)) {
-    warnings.push(`Row ${rowNumber}: same situation and line as row ${seenContent.get(contentKey)}, skipped.`)
+  if (seenContent.has(rowKey)) {
+    warnings.push(`Row ${rowNumber}: same situation and line as row ${seenContent.get(rowKey)}, skipped.`)
     return
   }
-  seenContent.set(contentKey, rowNumber)
+  seenContent.set(rowKey, rowNumber)
+
+  const matchingId = idByContent.get(rowKey)
+  if (!id && matchingId && !idsInFile.has(matchingId) && !seenIds.has(matchingId)) id = matchingId
 
   if (id) {
     if (!/^[a-z0-9][a-z0-9-]{1,59}$/.test(id)) {

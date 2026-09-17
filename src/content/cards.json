@@ -54,6 +54,123 @@
       "situation": "It's the first day back after a break",
       "line": "How was your break?",
       "followUp": "Did you go anywhere?"
+    },
+    {
+      "id": "morning-hey-hows-it-going-zgk1",
+      "situation": "A kid sits down next to you before class starts",
+      "line": "Hey. How's it going?"
+    },
+    {
+      "id": "morning-hi-how-was-your-night-phh6",
+      "situation": "Someone says \"hi\" to you first",
+      "line": "Hi! How was your night?"
+    },
+    {
+      "id": "morning-you-look-happy-what-happened-xn3r",
+      "situation": "A kid looks excited about something",
+      "line": "You look happy. What happened?"
+    },
+    {
+      "id": "morning-its-freezing-did-you-walk-6x9x",
+      "situation": "It's raining or really cold",
+      "line": "Ugh, this weather! Did you walk?"
+    },
+    {
+      "id": "morning-whered-you-get-that-i-like-it-io3k",
+      "situation": "Someone has a cool water bottle or lunchbox",
+      "line": "Where'd you get that? I like it."
+    },
+    {
+      "id": "morning-whoa-whats-that-for-y5nl",
+      "situation": "A kid is carrying a project or poster",
+      "line": "Whoa, what's that for?",
+      "followUp": "Can I see?"
+    },
+    {
+      "id": "morning-are-you-excited-for-today-rtos",
+      "situation": "There's a field trip or special event today",
+      "line": "Are you excited for today?",
+      "followUp": "What do you think it'll be like?"
+    },
+    {
+      "id": "morning-wait-up-walk-with-me-6yem",
+      "situation": "A kid you know is walking in alone",
+      "line": "Wait up! Walk with me?",
+      "tip": "Catching up to someone is an easy way in."
+    },
+    {
+      "id": "morning-happy-early-birthday-are-you-doi-6c23",
+      "situation": "Someone mentions their birthday is coming",
+      "line": "Happy early birthday! Are you doing anything?"
+    },
+    {
+      "id": "morning-here-you-dropped-this-cv1d",
+      "situation": "A kid drops something on the way in",
+      "line": "Here, you dropped this.",
+      "tip": "Helping first makes talking easy."
+    },
+    {
+      "id": "morning-pretty-good-you-t5tc",
+      "situation": "Someone asks how you are",
+      "line": "Pretty good. You?",
+      "tip": "Always add the \"You?\" It hands the turn back."
+    },
+    {
+      "id": "morning-oh-no-i-forgot-my-did-you-rememb-evps",
+      "situation": "You forgot to bring something for class",
+      "line": "Oh no, I forgot my ___. Did you remember yours?"
+    },
+    {
+      "id": "morning-i-read-that-one-where-are-you-at-ib7i",
+      "situation": "A kid has a book you've read",
+      "line": "I read that one! Where are you at?",
+      "followUp": "No spoilers, but the ending is good."
+    },
+    {
+      "id": "morning-do-you-know-who-the-sub-is-x647",
+      "situation": "There's a substitute teacher today",
+      "line": "Do you know who the sub is?"
+    },
+    {
+      "id": "morning-is-that-i-love-that-song-lqfe",
+      "situation": "Someone is humming or singing a song you know",
+      "line": "Is that ___? I love that song."
+    },
+    {
+      "id": "morning-you-okay-want-to-walk-in-togethe-4g87",
+      "situation": "A kid looks like they're having a bad morning",
+      "line": "You okay? Want to walk in together?"
+    },
+    {
+      "id": "morning-hi-im-who-do-you-have-this-year-7os6",
+      "situation": "It's the first day of school",
+      "line": "Hi, I'm ___. Who do you have this year?"
+    },
+    {
+      "id": "morning-cool-are-you-nervous-or-excited-bd5g",
+      "situation": "A kid says they have a game or recital tonight",
+      "line": "Cool! Are you nervous or excited?"
+    },
+    {
+      "id": "morning-i-like-your-hair-like-that-h1mx",
+      "situation": "You notice someone did their hair a new way",
+      "line": "I like your hair like that."
+    },
+    {
+      "id": "morning-wait-i-havent-seen-it-can-you-sh-o7c9",
+      "situation": "Kids are talking about a video or meme",
+      "line": "Wait, I haven't seen it. What happens in it?"
+    },
+    {
+      "id": "morning-late-night-inml",
+      "situation": "Someone yawns really big",
+      "line": "Late night?",
+      "followUp": "Same. What were you doing?"
+    },
+    {
+      "id": "morning-youre-early-too-whats-up-iitt",
+      "situation": "You both got to school super early",
+      "line": "You're early too? What's up?"
     }
   ],
   "class": [
@@ -77,7 +194,8 @@
     {
       "id": "class-stuck",
       "situation": "You're stuck on a question",
-      "line": "How did you get number 4?"
+      "line": "How did you get number 4?",
+      "tip": "Ask during partner or group work, not on a quiz or test."
     },
     {
       "id": "class-borrow",
@@ -111,6 +229,137 @@
       "situation": "Your group is quiet and nobody's starting",
       "line": "Should we split up the jobs?",
       "tip": "Offer to take one job first. It gets everyone going."
+    },
+    {
+      "id": "class-can-i-be-in-your-group-3fco",
+      "situation": "The teacher tells everyone to get into groups",
+      "line": "Can I be in your group?"
+    },
+    {
+      "id": "class-done-what-are-you-gonna-do-now-j92s",
+      "situation": "You finished early and the kid next to you did too",
+      "line": "Done? What are you gonna do now?"
+    },
+    {
+      "id": "class-want-me-to-show-you-how-i-did-th-xupc",
+      "situation": "Someone is stuck on a question you got",
+      "line": "Want me to show you how I did that one?"
+    },
+    {
+      "id": "class-what-page-did-she-say-5868",
+      "situation": "You didn't hear the directions",
+      "line": "What page did she say?",
+      "tip": "Asking the kid next to you is normal. Everyone does it."
+    },
+    {
+      "id": "class-want-to-share-i-can-hold-it-in-t-wwdc",
+      "situation": "You need to share a book or laptop",
+      "line": "Want to share? I can hold it in the middle."
+    },
+    {
+      "id": "class-you-can-use-some-of-mine-95rw",
+      "situation": "Someone forgot their supplies",
+      "line": "You can use some of mine."
+    },
+    {
+      "id": "class-ha-we-did-the-same-one-let-me-se-5yvm",
+      "situation": "You both drew the same thing in art",
+      "line": "Ha, we did the same one! Let me see yours."
+    },
+    {
+      "id": "class-i-can-go-first-if-nobody-wants-t-yftv",
+      "situation": "Your group is picking who presents",
+      "line": "I can go first if nobody wants to.",
+      "tip": "Volunteering for the small stuff makes you the brave one."
+    },
+    {
+      "id": "class-what-if-we-did-it-this-way-inste-11cs",
+      "situation": "You disagree with your group's plan",
+      "line": "What if we did it this way instead?"
+    },
+    {
+      "id": "class-that-was-funny-1l1v",
+      "situation": "A kid says something funny in class",
+      "line": "That was funny.",
+      "tip": "Say it to them after, not during the lesson."
+    },
+    {
+      "id": "class-nice-job-whatd-you-get-oe60",
+      "situation": "Someone gets a good grade back",
+      "line": "Nice job! What'd you get?"
+    },
+    {
+      "id": "class-ugh-that-one-was-rough-tgeg",
+      "situation": "You get a bad grade back and the kid next to you sees",
+      "line": "Ugh. That one was rough."
+    },
+    {
+      "id": "class-want-to-take-turns-reading-a-pag-80kw",
+      "situation": "The teacher assigns a reading partner",
+      "line": "Want to take turns reading a page each?"
+    },
+    {
+      "id": "class-heres-yours-dvlj",
+      "situation": "You're passing back papers",
+      "line": "Here's yours.",
+      "tip": "Say their name when you hand it over."
+    },
+    {
+      "id": "class-its-page-12-i-think-want-to-chec-417d",
+      "situation": "Someone asks what the homework is",
+      "line": "It's page 12, I think. Want to check with me?"
+    },
+    {
+      "id": "class-ill-write-it-down-if-you-do-the-yfbz",
+      "situation": "You're in a science lab group",
+      "line": "I'll write it down if you do the measuring."
+    },
+    {
+      "id": "class-you-got-this-its-gonna-be-good-s15y",
+      "situation": "A kid is nervous before presenting",
+      "line": "You got this. It's gonna be good."
+    },
+    {
+      "id": "class-want-to-play-a-quick-game-of-han-h9wt",
+      "situation": "Your group finished and has extra time",
+      "line": "Want to play a quick game of hangman?"
+    },
+    {
+      "id": "class-bless-you-hzjt",
+      "situation": "Someone sneezes",
+      "line": "Bless you.",
+      "tip": "Tiny things like this count. They make people notice you in a good way."
+    },
+    {
+      "id": "class-is-anyone-sitting-here-mr46",
+      "situation": "The teacher lets you pick your own seat",
+      "line": "Is anyone sitting here?"
+    },
+    {
+      "id": "class-i-think-its-vmwe",
+      "situation": "The teacher asks a question and nobody answers",
+      "line": "I think it's ___?",
+      "tip": "Even a wrong guess is brave. Teachers love it."
+    },
+    {
+      "id": "class-can-we-trade-ill-do-the-poster-a-h9lb",
+      "situation": "You want to switch jobs in your group",
+      "line": "Can we trade? I'll do the poster and you do the writing."
+    },
+    {
+      "id": "class-thanks-that-helped-a-lot-9cac",
+      "situation": "Someone helped you with a problem",
+      "line": "Thanks, that helped a lot."
+    },
+    {
+      "id": "class-yours-doing-this-too-aie7",
+      "situation": "You're working on a computer and it freezes",
+      "line": "Yours doing this too?"
+    },
+    {
+      "id": "class-im-if-you-need-help-finding-stuf-n4kj",
+      "situation": "A new kid joins your class",
+      "line": "I'm ___. If you need help finding stuff, just ask me."
     }
   ],
   "recess": [
@@ -132,7 +381,7 @@
     },
     {
       "id": "recess-ball",
-      "situation": "Their ball rolls over to you",
+      "situation": "Some kids' ball rolls over to you",
       "line": "Here you go!",
       "followUp": "What are you guys playing?"
     },
@@ -162,6 +411,120 @@
       "id": "recess-break",
       "situation": "You want to take a break from the game",
       "line": "I'm gonna take a break. Save my spot?"
+    },
+    {
+      "id": "recess-can-i-have-a-turn-when-youre-don-d1ga",
+      "situation": "You want to play on the swings but they're full",
+      "line": "Can I have a turn when you're done?"
+    },
+    {
+      "id": "recess-sure-what-are-we-playing-5rf8",
+      "situation": "Someone asks if you want to play",
+      "line": "Sure! What are we playing?"
+    },
+    {
+      "id": "recess-can-we-play-after-this-o9ld",
+      "situation": "You'd rather play something else",
+      "line": "Can we play ___ after this?"
+    },
+    {
+      "id": "recess-can-i-be-on-your-team-61vr",
+      "situation": "Kids are picking teams",
+      "line": "Can I be on your team?"
+    },
+    {
+      "id": "recess-are-you-okay-want-me-to-get-a-te-2apr",
+      "situation": "Someone gets hurt during a game",
+      "line": "Are you okay? Want me to get a teacher?"
+    },
+    {
+      "id": "recess-sorry-are-you-okay-tfsy",
+      "situation": "You accidentally hit someone with the ball",
+      "line": "Sorry! Are you okay?"
+    },
+    {
+      "id": "recess-what-games-do-you-guys-usually-p-j61l",
+      "situation": "You're the new kid at recess",
+      "line": "What games do you guys usually play?"
+    },
+    {
+      "id": "recess-what-are-you-reading-zhv3",
+      "situation": "A kid is reading alone on a bench",
+      "line": "What are you reading?",
+      "followUp": "Is it good?"
+    },
+    {
+      "id": "recess-can-you-show-me-how-to-do-that-5au4",
+      "situation": "Kids are doing handstands or cartwheels",
+      "line": "Can you show me how to do that?"
+    },
+    {
+      "id": "recess-its-okay-it-took-me-forever-to-l-fu14",
+      "situation": "Someone is bad at the game and getting frustrated",
+      "line": "It's okay, it took me forever to learn too."
+    },
+    {
+      "id": "recess-want-to-make-up-a-new-rule-uzuk",
+      "situation": "The game is getting boring",
+      "line": "Want to make up a new rule?"
+    },
+    {
+      "id": "recess-you-can-be-on-my-team-next-round-bb3t",
+      "situation": "Someone is sitting out because they got out",
+      "line": "You can be on my team next round."
+    },
+    {
+      "id": "recess-can-i-be-the-tagger-this-time-7miv",
+      "situation": "You want to trade jobs in the game",
+      "line": "Can I be the tagger this time?"
+    },
+    {
+      "id": "recess-ill-go-tell-a-teacher-a0zm",
+      "situation": "A ball goes over the fence",
+      "line": "I'll go tell a teacher."
+    },
+    {
+      "id": "recess-can-i-play-too-v6tu",
+      "situation": "Your friend is playing with someone else",
+      "line": "Can I play too?",
+      "tip": "Two friends is not a closed club. Just ask."
+    },
+    {
+      "id": "recess-can-i-add-to-your-drawing-cwsa",
+      "situation": "Someone is drawing with chalk",
+      "line": "Can I add to your drawing?"
+    },
+    {
+      "id": "recess-one-more-round-wpfz",
+      "situation": "Recess is almost over",
+      "line": "One more round?"
+    },
+    {
+      "id": "recess-lets-just-flip-for-it-uzfe",
+      "situation": "Two kids want you to choose which game to play",
+      "line": "Let's do rock-paper-scissors for it.",
+      "tip": "You don't have to pick. Give them a fair way to decide."
+    },
+    {
+      "id": "recess-good-game-guys-8r0q",
+      "situation": "You won the game",
+      "line": "Good game, guys!",
+      "tip": "Say it to the other team too."
+    },
+    {
+      "id": "recess-how-many-can-you-do-in-a-row-laku",
+      "situation": "A kid is doing something cool with a jump rope",
+      "line": "How many can you do in a row?"
+    },
+    {
+      "id": "recess-want-to-just-sit-and-hang-out-to-yenh",
+      "situation": "You want to sit and talk instead of run around",
+      "line": "Want to just sit and hang out today?"
+    },
+    {
+      "id": "recess-do-you-need-help-i-can-get-a-tea-omr8",
+      "situation": "A little kid needs help",
+      "line": "Do you need help? I can get a teacher."
     }
   ],
   "lunch": [
@@ -185,7 +548,7 @@
       "id": "lunch-last-word",
       "situation": "You don't know what to say",
       "line": "Repeat their last word as a question, like \"Minecraft?\"",
-      "tip": "They'll usually keep talking."
+      "tip": "They'll usually keep talking. Works with almost any word."
     },
     {
       "id": "lunch-recess",
@@ -217,6 +580,138 @@
       "situation": "Everyone at the table is quiet",
       "line": "Random question: would you rather fly or be invisible?",
       "tip": "A would-you-rather question gets everyone talking."
+    },
+    {
+      "id": "lunch-yeah-sit-here-paa9",
+      "situation": "Someone asks to sit with you",
+      "line": "Yeah, sit here!",
+      "tip": "Move your stuff over so it's obvious."
+    },
+    {
+      "id": "lunch-want-to-trade-i-have-hqaj",
+      "situation": "You want to trade snacks",
+      "line": "Want to trade? I have ___.",
+      "tip": "Ask about allergies first."
+    },
+    {
+      "id": "lunch-oh-no-here-i-have-napkins-x85g",
+      "situation": "Someone spills their drink",
+      "line": "Oh no! Here, I have napkins."
+    },
+    {
+      "id": "lunch-that-smells-so-good-what-is-it-e8dn",
+      "situation": "A kid is eating something that smells amazing",
+      "line": "That smells so good. What is it?"
+    },
+    {
+      "id": "lunch-hey-guys-whats-up-qo70",
+      "situation": "You sit down at a table and nobody says anything",
+      "line": "Hey guys. What's up?"
+    },
+    {
+      "id": "lunch-just-a-sandwich-what-about-you-5my8",
+      "situation": "Someone asks what you brought",
+      "line": "Just a sandwich. What about you?"
+    },
+    {
+      "id": "lunch-i-saw-that-the-part-with-the-was-pwao",
+      "situation": "Kids are talking about a movie you saw",
+      "line": "I saw that! The part with the ___ was the best."
+    },
+    {
+      "id": "lunch-is-it-good-should-i-watch-it-3o3o",
+      "situation": "Kids are talking about a movie you didn't see",
+      "line": "Is it good? Should I watch it?"
+    },
+    {
+      "id": "lunch-that-sounds-annoying-want-to-sit-emrt",
+      "situation": "Someone tells you they're having a bad day",
+      "line": "That sounds rough. Want to sit by me?"
+    },
+    {
+      "id": "lunch-doing-anything-this-weekend-yjit",
+      "situation": "You want to ask about their weekend plans",
+      "line": "Doing anything this weekend?"
+    },
+    {
+      "id": "lunch-ha-okay-do-you-know-the-one-abou-agk8",
+      "situation": "Someone tells a joke",
+      "line": "Ha! Okay, do you know the one about ___?"
+    },
+    {
+      "id": "lunch-anyone-want-some-i-have-extra-mb1d",
+      "situation": "You have extra snacks",
+      "line": "Anyone want some? I have extra.",
+      "tip": "Ask about allergies first. Sharing gets people talking."
+    },
+    {
+      "id": "lunch-can-you-save-my-seat-ill-be-righ-lucf",
+      "situation": "You need to get up and don't want to lose your seat",
+      "line": "Can you save my seat? I'll be right back."
+    },
+    {
+      "id": "lunch-hi-im-lxll",
+      "situation": "Someone new joins the table",
+      "line": "Hi, I'm ___.",
+      "tip": "Just your name. That's all it takes."
+    },
+    {
+      "id": "lunch-do-you-have-any-pets-hjcw",
+      "situation": "The table is talking about pets",
+      "line": "Do you have any pets?",
+      "followUp": "What's its name?"
+    },
+    {
+      "id": "lunch-do-you-play-anything-8c8t",
+      "situation": "The table is talking about sports",
+      "line": "Do you play anything?"
+    },
+    {
+      "id": "lunch-want-to-play-20-questions-vlrn",
+      "situation": "You want to start a game at the table",
+      "line": "Want to play 20 questions?"
+    },
+    {
+      "id": "lunch-wait-go-back-who-said-that-h4ui",
+      "situation": "Someone is telling a really long story",
+      "line": "Wait, go back. Who said that?",
+      "tip": "Asking a question shows you're listening."
+    },
+    {
+      "id": "lunch-here-ill-help-o48l",
+      "situation": "A kid drops their tray",
+      "line": "Here, I'll help."
+    },
+    {
+      "id": "lunch-no-is-it-fun-whats-it-like-6ga2",
+      "situation": "Someone asks if you've been somewhere",
+      "line": "No, is it fun? What's it like?"
+    },
+    {
+      "id": "lunch-whats-your-favorite-show-right-n-ymeo",
+      "situation": "You want to ask about their favorite stuff",
+      "line": "What's your favorite show right now?"
+    },
+    {
+      "id": "lunch-same-want-to-make-up-a-game-x7rm",
+      "situation": "Someone says they're bored",
+      "line": "Same. Want to make up a game?"
+    },
+    {
+      "id": "lunch-i-like-both-honestly-o9r4",
+      "situation": "The table is arguing about which is better",
+      "line": "I like both, honestly.",
+      "tip": "You don't have to pick a side."
+    },
+    {
+      "id": "lunch-happy-birthday-doing-anything-fu-9r44",
+      "situation": "It's someone's birthday",
+      "line": "Happy birthday! Doing anything fun?"
+    },
+    {
+      "id": "goodbye-im-gonna-head-out-see-you-at-rec-drvh",
+      "situation": "You're leaving the lunch table",
+      "line": "I'm gonna head out. See you at recess."
     }
   ],
   "after-school": [
@@ -266,6 +761,124 @@
       "situation": "A kid plays the same video game as you",
       "line": "What level are you on?",
       "followUp": "Want to play together sometime?"
+    },
+    {
+      "id": "after-school-how-do-you-know-xdia",
+      "situation": "You're at a birthday party and don't know many kids",
+      "line": "How do you know ___?"
+    },
+    {
+      "id": "after-school-want-to-watch-something-zgmt",
+      "situation": "You're at a sleepover and it's getting quiet",
+      "line": "Want to watch something?"
+    },
+    {
+      "id": "after-school-youre-really-good-how-long-have-kk6a",
+      "situation": "A kid at practice is good at something",
+      "line": "You're really good. How long have you been playing?"
+    },
+    {
+      "id": "after-school-hi-want-to-play-c99a",
+      "situation": "You're at the park and see a kid your age",
+      "line": "Hi. Want to play?"
+    },
+    {
+      "id": "after-school-that-series-is-so-good-which-boo-utet",
+      "situation": "A kid at the library is reading your favorite series",
+      "line": "That series is so good. Which book are you on?"
+    },
+    {
+      "id": "after-school-what-do-you-want-to-do-im-fine-w-vqgx",
+      "situation": "You're at a playdate and don't know what to do",
+      "line": "What do you want to do? I'm fine with anything."
+    },
+    {
+      "id": "after-school-hi-im-what-do-you-guys-usually-p-0m5f",
+      "situation": "Your friend brings another friend you don't know",
+      "line": "Hi, I'm ___. What do you guys usually play?"
+    },
+    {
+      "id": "after-school-hey-im-want-to-go-first-g343",
+      "situation": "The coach puts you with a new partner",
+      "line": "Hey, I'm ___. Want to go first?"
+    },
+    {
+      "id": "after-school-its-okay-we-got-the-next-one-jw8c",
+      "situation": "A kid on your team makes a mistake",
+      "line": "It's okay, we got the next one."
+    },
+    {
+      "id": "after-school-yes-good-job-guys-w8up",
+      "situation": "Your team wins",
+      "line": "Yes! Good job, guys!"
+    },
+    {
+      "id": "after-school-want-to-come-over-sometime-my-mo-vhbf",
+      "situation": "You want to invite someone over",
+      "line": "Want to come over sometime? My mom can text your mom."
+    },
+    {
+      "id": "after-school-yeah-let-me-ask-my-parents-b0tp",
+      "situation": "Someone invites you over",
+      "line": "Yeah! Let me ask my parents."
+    },
+    {
+      "id": "after-school-can-i-have-a-snack-lv3k",
+      "situation": "You're at a friend's house and want a snack",
+      "line": "Can I have a snack?",
+      "tip": "It's okay to ask. It's not rude."
+    },
+    {
+      "id": "after-school-i-think-im-gonna-head-home-soon-ot44",
+      "situation": "You want to go home from a playdate",
+      "line": "I think I'm gonna head home soon. This was fun.",
+      "tip": "Then ask their grown-up to call your mom or dad."
+    },
+    {
+      "id": "after-school-want-to-stretch-together-iu98",
+      "situation": "A kid at practice is sitting alone",
+      "line": "Want to stretch together?"
+    },
+    {
+      "id": "after-school-hey-weird-seeing-you-here-571o",
+      "situation": "You see a classmate at the grocery store",
+      "line": "Hey! Weird seeing you here."
+    },
+    {
+      "id": "after-school-can-i-play-fnof",
+      "situation": "You want to join a game at the park",
+      "line": "Can I play?"
+    },
+    {
+      "id": "after-school-what-are-you-making-k6xh",
+      "situation": "You're at a class like art or coding and don't know anyone",
+      "line": "What are you making?",
+      "followUp": "Can I see?"
+    },
+    {
+      "id": "after-school-what-kind-whats-its-name-b3q9",
+      "situation": "A kid says they have a pet",
+      "line": "What kind? What's its name?"
+    },
+    {
+      "id": "after-school-do-you-go-to-school-around-here-ni97",
+      "situation": "You're waiting at the dentist or doctor next to a kid",
+      "line": "Do you go to school around here?"
+    },
+    {
+      "id": "after-school-oh-hey-is-that-your-brother-play-l1vo",
+      "situation": "A kid you know is at your sibling's game",
+      "line": "Oh hey! Who are you here to watch?"
+    },
+    {
+      "id": "after-school-hey-whats-up-want-to-play-later-t4h8",
+      "situation": "You want to text a friend after school",
+      "line": "Hey, what's up? Want to play later?"
+    },
+    {
+      "id": "after-school-want-to-ride-bikes-saturday-r59u",
+      "situation": "You want to plan a bike ride",
+      "line": "Want to ride bikes Saturday?"
     }
   ],
   "goodbye": [
@@ -302,13 +915,90 @@
     {
       "id": "bye-good-luck",
       "situation": "They told you about something coming up",
-      "line": "Good luck at your game!",
+      "line": "Good luck with your ___!",
       "tip": "Remembering what they told you makes them feel noticed."
     },
     {
       "id": "bye-mid-story",
       "situation": "You have to leave in the middle of their story",
       "line": "I have to go, but tell me the rest tomorrow!"
+    },
+    {
+      "id": "goodbye-thanks-for-having-me-dwdt",
+      "situation": "You're leaving a playdate",
+      "line": "Thanks for having me!",
+      "tip": "Say it to the grown-up too."
+    },
+    {
+      "id": "goodbye-happy-birthday-thanks-for-inviti-18wt",
+      "situation": "You're leaving a birthday party",
+      "line": "Happy birthday! Thanks for inviting me."
+    },
+    {
+      "id": "goodbye-see-you-bye-lrul",
+      "situation": "Someone is leaving before you",
+      "line": "See you! Bye!"
+    },
+    {
+      "id": "goodbye-thats-my-ride-see-you-tomorrow-qc6p",
+      "situation": "The car is here to pick you up",
+      "line": "That's my ride. See you tomorrow!"
+    },
+    {
+      "id": "goodbye-have-a-good-break-see-you-after-00u9",
+      "situation": "It's the last day before a break",
+      "line": "Have a good break! See you after."
+    },
+    {
+      "id": "goodbye-want-to-play-again-next-week-ryqs",
+      "situation": "You want to make plans for next time",
+      "line": "Want to play again next week?"
+    },
+    {
+      "id": "goodbye-good-practice-see-you-thursday-b7py",
+      "situation": "Practice is over",
+      "line": "Good practice. See you next time!"
+    },
+    {
+      "id": "goodbye-okay-i-gotta-go-bye-v9sj",
+      "situation": "You're hanging up a video call",
+      "line": "Okay, I gotta go. Bye!"
+    },
+    {
+      "id": "goodbye-ill-miss-you-can-we-still-text-kujt",
+      "situation": "Your friend is moving away",
+      "line": "I'll miss you. Can we still text?"
+    },
+    {
+      "id": "goodbye-it-was-nice-meeting-you-y7hd",
+      "situation": "You're saying bye to a kid you just met",
+      "line": "It was nice meeting you."
+    },
+    {
+      "id": "goodbye-i-have-to-go-thanks-for-letting-ljr7",
+      "situation": "You have to leave a game early",
+      "line": "I have to go. Thanks for letting me play!"
+    },
+    {
+      "id": "goodbye-bye-see-you-later-swdx",
+      "situation": "Someone says \"bye\" to you",
+      "line": "Bye! See you later!",
+      "tip": "Say their name too if you know it."
+    },
+    {
+      "id": "goodbye-have-a-great-summer-1lsg",
+      "situation": "School is out for summer",
+      "line": "Have a great summer!"
+    },
+    {
+      "id": "goodbye-good-game-you-got-me-this-time-5a2j",
+      "situation": "You lost the game and it's time to go",
+      "line": "Good game. You got me this time."
+    },
+    {
+      "id": "goodbye-anyway-i-should-go-see-you-aroun-9nmz",
+      "situation": "You want to end a conversation that's dragging",
+      "line": "Anyway, I should go. See you around."
     }
   ],
   "brain-freeze": [
@@ -320,7 +1010,8 @@
     {
       "id": "freeze-compliment",
       "situation": "Your mind goes blank",
-      "line": "Compliment one thing."
+      "line": "I like your ___.",
+      "tip": "Shoes, backpack, drawing, anything. One real thing."
     },
     {
       "id": "freeze-forgot",
@@ -355,6 +1046,102 @@
       "situation": "Your heart is pounding",
       "line": "Take one slow breath, then just say \"Hey.\"",
       "tip": "Short and simple is plenty."
+    },
+    {
+      "id": "brain-freeze-nice-weather-today-yjsk",
+      "situation": "You can't think of anything to say",
+      "line": "This is taking forever, huh?",
+      "tip": "Boring is fine. It fills the gap."
+    },
+    {
+      "id": "brain-freeze-i-like-what-about-you-o5df",
+      "situation": "Someone asks what you like to do",
+      "line": "I like ___. What about you?"
+    },
+    {
+      "id": "brain-freeze-wait-say-that-again-8pvd",
+      "situation": "You blanked on what they said",
+      "line": "Wait, say that again?"
+    },
+    {
+      "id": "brain-freeze-sorry-i-was-thinking-what-were-w-ckcu",
+      "situation": "You realize you've been quiet a long time",
+      "line": "Sorry, I was thinking. What were we talking about?"
+    },
+    {
+      "id": "brain-freeze-im-gonna-go-check-something-be-r-b4bv",
+      "situation": "You want to leave but don't know how",
+      "line": "Okay, I'm gonna go. See you later!"
+    },
+    {
+      "id": "brain-freeze-id-rather-not-say-what-about-you-k4i3",
+      "situation": "Someone asks a question you don't want to answer",
+      "line": "I'd rather not say. Hey, did you see ___?"
+    },
+    {
+      "id": "brain-freeze-wait-are-you-serious-9c4a",
+      "situation": "You don't know if they're joking",
+      "line": "Wait, are you serious?"
+    },
+    {
+      "id": "brain-freeze-look-at-one-friendly-face-take-a-exz0",
+      "situation": "You feel like everyone is looking at you",
+      "line": "Look at one friendly face, take a breath, and say one word.",
+      "tip": "Nobody is watching as closely as it feels."
+    },
+    {
+      "id": "brain-freeze-whats-your-favorite-m6kd",
+      "situation": "You need a question fast",
+      "line": "What's your favorite ___?",
+      "tip": "Food, game, show, animal. Pick any one."
+    },
+    {
+      "id": "brain-freeze-whats-funny-8lfo",
+      "situation": "Someone laughs and you don't get it",
+      "line": "What's funny?"
+    },
+    {
+      "id": "brain-freeze-um-let-me-think-ask-me-again-p07o",
+      "situation": "You got asked something and just froze",
+      "line": "Um, let me think. Ask me again?"
+    },
+    {
+      "id": "brain-freeze-say-it-again-a-little-louder-vug4",
+      "situation": "Your voice comes out too quiet",
+      "line": "Say it again, a little louder.",
+      "tip": "Being asked to repeat yourself is not a big deal."
+    },
+    {
+      "id": "brain-freeze-what-was-it-called-again-xnpz",
+      "situation": "You forgot what game they said",
+      "line": "What was it called again?"
+    },
+    {
+      "id": "brain-freeze-hey-hey-you-j0fz",
+      "situation": "You don't know their name",
+      "line": "Hey!",
+      "tip": "Later you can ask, \"Sorry, what's your name again?\" Everyone forgets names."
+    },
+    {
+      "id": "brain-freeze-what-are-you-doing-2o1l",
+      "situation": "You need an easy way to start",
+      "line": "Hey, what are you doing?"
+    },
+    {
+      "id": "brain-freeze-okay-cool-see-you-00t5",
+      "situation": "The conversation just ended and it feels awkward",
+      "line": "Okay, cool. See you.",
+      "tip": "Ending it is better than standing there."
+    },
+    {
+      "id": "brain-freeze-yeah-totally-ylp2",
+      "situation": "You want to agree but can't think of words",
+      "line": "Yeah, totally."
+    },
+    {
+      "id": "brain-freeze-so-anyway-what-were-you-saying-g344",
+      "situation": "You need to fill a pause",
+      "line": "So anyway, what were you saying?"
     }
   ],
   "tricky": [
@@ -412,6 +1199,137 @@
       "situation": "You tripped or dropped all your stuff",
       "line": "Ha. Smooth, right?",
       "tip": "Smile and keep going. Everyone forgets about it fast."
+    },
+    {
+      "id": "tricky-say-hi-again-later-or-say-it-to-eioi",
+      "situation": "A kid ignores you when you say hi",
+      "line": "Say hi again later, or say it to someone else.",
+      "tip": "They might not have heard. Try once more, then move on."
+    },
+    {
+      "id": "tricky-good-game-im-gonna-take-a-minute-upcb",
+      "situation": "You lose a game and feel mad",
+      "line": "Good game. I'm gonna take a minute.",
+      "tip": "Walking away for a minute is allowed."
+    },
+    {
+      "id": "tricky-thats-not-cool-shes-my-friend-fj29",
+      "situation": "Someone says something mean about your friend",
+      "line": "That's not cool. She's my friend."
+    },
+    {
+      "id": "tricky-im-really-sorry-i-broke-this-i-d-b0y5",
+      "situation": "You broke something at a friend's house",
+      "line": "I'm really sorry, I broke this. I didn't mean to.",
+      "tip": "Telling right away is always better than hiding it."
+    },
+    {
+      "id": "tricky-i-like-both-of-you-im-not-pickin-e86n",
+      "situation": "Two friends are fighting and want you to pick",
+      "line": "I like both of you. I'm not picking."
+    },
+    {
+      "id": "tricky-i-heard-about-your-party-did-it-lr4s",
+      "situation": "A friend didn't invite you to their party",
+      "line": "I heard about your party. Did it go okay?",
+      "tip": "You can ask without being mad. Sometimes it's not about you."
+    },
+    {
+      "id": "tricky-nice-job-im-gonna-study-more-nex-aouv",
+      "situation": "You got a worse grade than your friend",
+      "line": "Nice job. I'm gonna study more next time."
+    },
+    {
+      "id": "tricky-i-dont-really-want-to-talk-about-hczj",
+      "situation": "Someone asks a question that's too personal",
+      "line": "I don't really want to talk about that."
+    },
+    {
+      "id": "tricky-ha-oops-anyway-nvbk",
+      "situation": "You said something wrong and everyone laughed",
+      "line": "Ha, oops. Anyway."
+    },
+    {
+      "id": "tricky-i-cant-today-but-maybe-another-t-005o",
+      "situation": "You want to say no to a friend nicely",
+      "line": "I can't today, but maybe another time."
+    },
+    {
+      "id": "tricky-thats-cool-hey-did-you-mdku",
+      "situation": "Someone is bragging a lot",
+      "line": "That's cool. Hey, did you ___?",
+      "tip": "Change the subject. Don't compete."
+    },
+    {
+      "id": "tricky-are-you-mad-at-me-did-i-do-somet-0qj2",
+      "situation": "A friend is mad at you and you don't know why",
+      "line": "Are you mad at me? Did I do something?"
+    },
+    {
+      "id": "tricky-hey-when-you-it-kind-of-bugged-m-r5ex",
+      "situation": "You need to tell a friend they did something that bugged you",
+      "line": "Hey, when you ___, it kind of bugged me.",
+      "tip": "Say it once, calmly. Then let it go."
+    },
+    {
+      "id": "tricky-wait-can-i-say-something-0uuh",
+      "situation": "Someone keeps talking and you can't get a word in",
+      "line": "Wait, can I say something?"
+    },
+    {
+      "id": "tricky-do-you-want-me-to-get-a-teacher-d2si",
+      "situation": "A kid is crying",
+      "line": "Do you want me to get a teacher?",
+      "tip": "You don't have to fix it. Just help them get help."
+    },
+    {
+      "id": "tricky-sorry-i-didnt-mean-to-leave-you-ykad",
+      "situation": "You accidentally left someone out",
+      "line": "Sorry, I didn't mean to leave you out. Come play."
+    },
+    {
+      "id": "tricky-ill-play-a-couple-rounds-then-ca-hnpt",
+      "situation": "You don't like the game everyone wants to play",
+      "line": "I'll play a couple rounds, then can we switch?"
+    },
+    {
+      "id": "tricky-thank-you-that-was-nice-of-you-y6dv",
+      "situation": "Someone gave you a gift you don't like",
+      "line": "Thank you! That was nice of you.",
+      "tip": "You're thanking them for thinking of you."
+    },
+    {
+      "id": "tricky-ask-a-friend-to-play-something-m-pa3v",
+      "situation": "Someone is whispering and you think it's about you",
+      "line": "Ask a friend to play something. Move away from it.",
+      "tip": "If it keeps happening, tell a grown-up."
+    },
+    {
+      "id": "tricky-ha-we-think-alike-want-to-do-it-step",
+      "situation": "A friend copied your idea",
+      "line": "Ha, we think alike. Want to do it together?"
+    },
+    {
+      "id": "tricky-find-the-food-table-or-a-game-an-6o0u",
+      "situation": "You feel left out at a party",
+      "line": "Find the food table or a game and stand by it.",
+      "tip": "Kids come to you. Then just say hi."
+    },
+    {
+      "id": "tricky-answer-short-and-polite-its-okay-ndq4",
+      "situation": "A grown-up you don't know asks you a question",
+      "line": "Answer short and polite. It's okay to say \"I don't know.\"",
+      "tip": "You never have to say where you live or go anywhere with them. If it feels weird, find a grown-up you know."
+    },
+    {
+      "id": "tricky-i-like-it-everyone-has-their-own-mnbk",
+      "situation": "Someone says your drawing or work is bad",
+      "line": "I like it. Everyone has their own style."
+    },
+    {
+      "id": "tricky-sorry-i-was-grumpy-earlier-i-was-tseg",
+      "situation": "You need to apologize for being grumpy",
+      "line": "Sorry I was grumpy earlier. I wasn't mad at you."
     }
   ],
   "stand-up": [
@@ -501,6 +1419,128 @@
       "situation": "You said stop and they didn't",
       "line": "I said stop. I'm getting a grown-up.",
       "tip": "Getting help is brave. It is not tattling."
+    },
+    {
+      "id": "stand-up-its-my-turn-now-you-already-went-ptxa",
+      "situation": "Someone won't let you have a turn",
+      "line": "It's my turn now. You already went."
+    },
+    {
+      "id": "stand-up-hey-i-was-sitting-there-can-i-ha-8van",
+      "situation": "A kid takes your seat",
+      "line": "Hey, I was sitting there. Can I have it back?"
+    },
+    {
+      "id": "stand-up-dont-push-me-hp77",
+      "situation": "Someone pushes you in line",
+      "line": "Don't push me.",
+      "tip": "Firm and calm. You don't have to yell."
+    },
+    {
+      "id": "stand-up-no-im-not-lying-for-you-8p8t",
+      "situation": "A kid tells you to lie to a teacher",
+      "line": "No. I'm not lying for you."
+    },
+    {
+      "id": "stand-up-i-like-it-you-dont-have-to-dwxj",
+      "situation": "Someone keeps making fun of what you're eating",
+      "line": "I like it. You don't have to."
+    },
+    {
+      "id": "stand-up-nope-im-not-doing-that-m1rb",
+      "situation": "A kid dares you to do something dangerous",
+      "line": "Nope. I'm not doing that.",
+      "tip": "A dare is not a rule. You can just say no."
+    },
+    {
+      "id": "stand-up-yes-we-can-im-playing-y7pr",
+      "situation": "Someone says girls can't play",
+      "line": "Yes we can. I'm playing."
+    },
+    {
+      "id": "stand-up-stop-i-dont-like-that-l0j1",
+      "situation": "Someone won't stop tickling or hugging you",
+      "line": "Stop. I don't like that.",
+      "tip": "Your body is yours. You get to say stop. If they don't stop, tell a grown-up you trust."
+    },
+    {
+      "id": "stand-up-i-told-you-that-in-private-pleas-u0cf",
+      "situation": "A friend keeps telling your secrets",
+      "line": "I told you that in private. Please don't share it."
+    },
+    {
+      "id": "stand-up-thats-not-true-and-i-dont-like-i-8hvz",
+      "situation": "Someone is spreading a rumor about you",
+      "line": "That's not true, and I don't like it.",
+      "tip": "Say it once, then tell a grown-up."
+    },
+    {
+      "id": "stand-up-i-dont-need-to-do-that-to-sit-he-8o5h",
+      "situation": "Kids say you have to do something to sit with them",
+      "line": "I don't need to do that to sit here."
+    },
+    {
+      "id": "stand-up-i-like-her-shes-my-friend-eeot",
+      "situation": "A kid says your friend is weird",
+      "line": "I like her. She's my friend."
+    },
+    {
+      "id": "stand-up-stop-it-i-worked-hard-on-that-g9mr",
+      "situation": "Someone messes up your work on purpose",
+      "line": "Stop it. I worked hard on that."
+    },
+    {
+      "id": "stand-up-let-me-finish-please-4k0h",
+      "situation": "Someone keeps interrupting you",
+      "line": "Let me finish, please."
+    },
+    {
+      "id": "stand-up-im-still-learning-thats-fine-6tlu",
+      "situation": "A kid says you're bad at something",
+      "line": "I'm still learning. That's fine."
+    },
+    {
+      "id": "stand-up-no-thats-mine-wcv4",
+      "situation": "Someone tells you to give them your snack",
+      "line": "No, that's mine."
+    },
+    {
+      "id": "stand-up-it-didnt-feel-like-kidding-dont-v4lg",
+      "situation": "Someone says \"just kidding\" after being mean",
+      "line": "It didn't feel like kidding. Don't say that."
+    },
+    {
+      "id": "stand-up-ask-first-next-time-can-i-have-i-rldz",
+      "situation": "A kid takes your ball or toy without asking",
+      "line": "Ask first next time. Can I have it back?"
+    },
+    {
+      "id": "stand-up-okay-ill-sit-somewhere-else-pek0",
+      "situation": "Someone says you can't sit with them",
+      "line": "Okay. I'll sit somewhere else.",
+      "tip": "Say it like you don't care. Then go sit with someone who's glad to have you."
+    },
+    {
+      "id": "stand-up-thats-mean-im-leaving-the-chat-2d1q",
+      "situation": "Someone is being mean online or in a group chat",
+      "line": "That's mean. I'm leaving the chat.",
+      "tip": "Screenshot it first, then leave and show a grown-up."
+    },
+    {
+      "id": "stand-up-im-not-keeping-that-secret-im-te-x179",
+      "situation": "Someone says you have to keep a secret that feels wrong",
+      "line": "I don't keep secrets like that.",
+      "tip": "Tell a grown-up you trust right away, even if they said not to."
+    },
+    {
+      "id": "stand-up-no-i-dont-share-that-with-anyone-kezw",
+      "situation": "A kid pressures you to share your password",
+      "line": "No. I don't share that with anyone."
+    },
+    {
+      "id": "recess-hey-thats-not-how-it-works-do-ov-uom5",
+      "situation": "Somebody cheated in the game",
+      "line": "Hey, I don't think that counts. Can we redo it?"
     }
   ]
 }
