@@ -8,8 +8,8 @@ Built with React + Vite + Tailwind + Firebase (Firestore and Hosting). Plain Jav
 
 - **Family code.** The app opens on a number pad. Each family has its own code, created on the admin page. A device remembers the code after the first time.
 - **Pick a kid.** Big avatar buttons. Each kid has their own points, streak, missions, and trophies.
-- **Practice.** Each run deals 10 random cards from the deck. Tap a card to flip it. Swipe right (or tap **Practiced**) for +1 point, swipe left to **Skip**. Pick **Parent** or **Friend** at the top so practice gets counted by who it was with.
-- **👎 Hide.** Tap 👎 on a card the kid doesn't like and it never gets dealt to them again (there's an Undo right after). Hidden cards can be brought back in the Trophy Room.
+- **Practice.** Each run deals 10 random cards from the deck, weighted toward 👍 cards. Tap a card to flip it. Swipe left and right (or use the ← → buttons) to move back and forward through the run, so you can revisit a card you already saw. **Practiced +1** scores the card and slides to the next one. Pick **Parent** or **Friend** at the top so practice gets counted by who it was with.
+- **👍 / 👎.** 👍 a card and it comes up about 3x as often for that kid. 👎 buries it: it's only dealt if a deck runs out of other cards (there's an Undo right after, and buried cards can be brought back in the Trophy Room).
 - **Missions.** **Gonna try it with a friend** saves the card to *My missions* on the home screen, so they can warm up before school.
 - **I said it for real! +5.** The big celebration. If the card was a mission, the mission is complete.
 - **Say it your way.** Long-press the back of a card (or tap the pencil) to rewrite the line in the kid's own words.
@@ -104,7 +104,7 @@ For cards that only matter to one family, use **Grown-ups settings > Your cards*
 families/{code}                               name, createdAt
 families/{code}/kids/{kidId}                  name, avatar, color, points, streak, lastPracticeDate
 families/{code}/kids/{kidId}/cards/{cardId}   practiced, practicedWithParent, practicedWithFriend,
-                                              usedForReal, mission, hidden, lastPracticed, customLine
+                                              usedForReal, mission, liked, hidden, lastPracticed, customLine
 families/{code}/customCards/{cardId}          categoryId, situation, line, followUp, tip
 ```
 

@@ -24,7 +24,7 @@ import { POINTS, streakPatch } from './streak'
 //   families/{code}                               name, createdAt
 //   families/{code}/kids/{kidId}                  name, avatar, color, points, streak, lastPracticeDate, createdAt
 //   families/{code}/kids/{kidId}/cards/{cardId}   practiced, practicedWithParent, practicedWithFriend,
-//                                                 usedForReal, mission, hidden, lastPracticed, customLine
+//                                                 usedForReal, mission, liked, hidden, lastPracticed, customLine
 //   families/{code}/customCards/{cardId}          categoryId, situation, line, followUp, tip, createdAt
 
 const familyRef = (code) => doc(db, 'families', code)
@@ -128,9 +128,10 @@ export function logPractice(code, kid, cardId, kind, partner) {
 export const setMission = (code, kidId, cardId, on) =>
   setDoc(doc(kidCardsCol(code, kidId), cardId), { mission: on }, { merge: true })
 
-// Thumbs down: this kid doesn't want the card in their decks.
-export const setHidden = (code, kidId, cardId, hidden) =>
-  setDoc(doc(kidCardsCol(code, kidId), cardId), { hidden }, { merge: true })
+// 👍 / 👎 for one kid: 'up' (dealt more often), 'down' (buried), or null (neither).
+// 👎 is stored as `hidden` so cards hidden before burying existed stay buried.
+export const setRating = (code, kidId, cardId, rating) =>
+  setDoc(doc(kidCardsCol(code, kidId), cardId), { liked: rating === 'up', hidden: rating === 'down' }, { merge: true })
 
 export const saveCustomLine = (code, kidId, cardId, text) =>
   setDoc(doc(kidCardsCol(code, kidId), cardId), { customLine: text || deleteField() }, { merge: true })

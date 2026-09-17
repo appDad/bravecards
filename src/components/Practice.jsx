@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import useStoredState from '../hooks/useStoredState'
+import { deal } from '../lib/deal'
 import { buzz, shuffle } from '../lib/motion'
 import { POINTS } from '../lib/streak'
 import Card from './Card'
@@ -9,8 +10,9 @@ import LineEditor from './LineEditor'
 import PointsCounter from './PointsCounter'
 import ProgressDots from './ProgressDots'
 
-const DECK_SIZE = 10 // cards dealt per run, picked at random from the deck
+const DECK_SIZE = 10 // cards dealt per run
 const UNDO_MS = 5000
+const PRACTICED_PAUSE_MS = 450 // let the ✓ land before sliding to the next card
 let swipeHintSeen = false
 
 const PARTNERS = [
@@ -18,12 +20,14 @@ const PARTNERS = [
   { id: 'friend', label: 'Friend', emoji: '🧑‍🤝‍🧑' },
 ]
 
-// Deal a run: never cards this kid gave a thumbs down.
+// Deal a run of 10 at random, weighted toward this kid's 👍 cards. 👎 (buried) cards only
+// fill in when a deck runs short; missions are the kid's own picks, minus buried ones.
 function buildDeck(library, deckId, cards) {
-  const visible = library.allCards.filter((card) => !cards[card.id]?.hidden)
-  if (deckId === 'missions') return shuffle(visible.filter((card) => cards[card.id]?.mission))
-  const pool = deckId === 'random' ? visible : visible.filter((card) => card.categoryId === deckId)
-  return shuffle(pool).slice(0, DECK_SIZE)
+  if (deckId === 'missions') {
+    return shuffle(library.allCards.filter((card) => cards[card.id]?.mission && !cards[card.id]?.hidden))
+  }
+  const pool = deckId === 'random' ? library.allCards : library.allCards.filter((card) => card.categoryId === deckId)
+  return deal(pool, cards, DECK_SIZE)
 }
 
 function deckInfo(library, deckId) {
@@ -36,7 +40,7 @@ function deckInfo(library, deckId) {
 export default function Practice({ deckId, library, progress, onExit }) {
   const [round, setRound] = useState(() => ({ n: 0, deck: buildDeck(library, deckId, progress.cards) }))
   const [summary, setSummary] = useState(null)
-  const [undo, setUndo] = useState(null) // { cardId, key } for the "Hidden. Undo" toast
+  const [undo, setUndo] = useState(null) // { cardId, previous, key } for the "Buried. Undo" toast
 
   useEffect(() => {
     if (!undo) return
@@ -55,13 +59,13 @@ export default function Practice({ deckId, library, progress, onExit }) {
     content = (
       <div className="flex flex-1 flex-col items-center justify-center gap-6 text-center">
         <span className="text-7xl" aria-hidden="true">
-          {missions ? '🎯' : '👎'}
+          {missions ? '🎯' : '🃏'}
         </span>
-        <p className="font-display text-3xl">{missions ? 'No missions right now' : 'No cards left here'}</p>
+        <p className="font-display text-3xl">{missions ? 'No missions right now' : 'No cards here yet'}</p>
         <p className="text-ink-soft">
           {missions
             ? 'On any card, tap "Gonna try it with a friend" to add it here.'
-            : 'Every card in this deck is hidden. Bring some back in the Trophy Room.'}
+            : 'This deck is empty. Add cards in Grown-ups settings.'}
         </p>
         <button type="button" className="btn3d w-full" onClick={onExit}>
           Back home
@@ -69,20 +73,15 @@ export default function Practice({ deckId, library, progress, onExit }) {
       </div>
     )
   } else if (summary) {
-    // Counted from live progress, so a card un-hidden with Undo counts as skipped, not hidden.
-    const { deck, results, earned } = summary
-    const stillHidden = (card, i) => results[i] === 'hidden' && progress.cards[card.id]?.hidden
-    const skipped = deck.filter((card, i) => results[i] === 'skipped' || (results[i] === 'hidden' && !stillHidden(card, i)))
+    // Read from live progress, so a card un-buried with Undo stops counting as buried.
+    const { deck, practicedIds, buriedIds, earned } = summary
+    const buried = deck.filter((card) => buriedIds.has(card.id) && progress.cards[card.id]?.hidden)
+    const notPracticed = deck.filter((card) => !practicedIds.has(card.id) && !buried.includes(card))
     content = (
       <DeckDone
-        summary={{
-          practiced: results.filter((r) => r === 'practiced').length,
-          skipped,
-          hidden: deck.filter(stillHidden).length,
-          earned,
-        }}
+        summary={{ practiced: practicedIds.size, left: notPracticed, buried: buried.length, earned }}
         onAgain={() => startRound(buildDeck(library, deckId, progress.cards))}
-        onRetrySkipped={() => startRound(skipped)}
+        onRetryLeft={() => startRound(notPracticed)}
         onHome={onExit}
       />
     )
@@ -96,7 +95,7 @@ export default function Practice({ deckId, library, progress, onExit }) {
         progress={progress}
         onExit={onExit}
         onFinish={setSummary}
-        onHidden={(cardId) => setUndo({ cardId, key: Date.now() })}
+        onBuried={(cardId, previous) => setUndo({ cardId, previous, key: Date.now() })}
       />
     )
   }
@@ -110,11 +109,11 @@ export default function Practice({ deckId, library, progress, onExit }) {
           role="status"
           className="pop-in fixed top-[max(12px,env(safe-area-inset-top))] left-1/2 z-40 flex w-[min(92vw,380px)] -translate-x-1/2 items-center gap-3 rounded-full bg-ink py-1.5 pr-1.5 pl-5 text-white shadow-[0_6px_20px_rgb(22_24_58/0.3)]"
         >
-          <span className="flex-1 font-bold">👎 Hidden from your decks</span>
+          <span className="flex-1 font-bold">👎 Buried. It'll hardly come up.</span>
           <button
             type="button"
             onClick={() => {
-              progress.toggleHidden(undo.cardId, false)
+              progress.rateCard(undo.cardId, undo.previous)
               setUndo(null)
             }}
             className="min-h-11 rounded-full bg-gold px-5 font-display text-lg text-ink"
@@ -127,13 +126,16 @@ export default function Practice({ deckId, library, progress, onExit }) {
   )
 }
 
-function Round({ info, deck, library, progress, onExit, onFinish, onHidden }) {
-  const { kid, cards, practice, sayForReal, toggleMission, toggleHidden, saveLine } = progress
+function Round({ info, deck, library, progress, onExit, onFinish, onBuried }) {
+  const { kid, cards, practice, sayForReal, toggleMission, rateCard, saveLine } = progress
   const [partner, setPartner] = useStoredState('bravecards.partner', 'parent')
   const [index, setIndex] = useState(0)
   const [flipped, setFlipped] = useState(false)
-  const [exit, setExit] = useState(null) // 'left' | 'right' | 'down' (hidden)
-  const [results, setResults] = useState([]) // 'practiced' | 'skipped' | 'hidden', one per dealt card
+  // A move in progress: { exit: 'left' | 'right' | 'down', step: -1 | 1 }
+  const [move, setMove] = useState(null)
+  const [enterFrom, setEnterFrom] = useState(null) // which side the card slid in from
+  const [practicedIds, setPracticedIds] = useState(() => new Set())
+  const [buriedIds, setBuriedIds] = useState(() => new Set())
   const [earned, setEarned] = useState(0)
   const [saidForReal, setSaidForReal] = useState(() => new Set())
   const [celebration, setCelebration] = useState(null)
@@ -143,42 +145,57 @@ function Round({ info, deck, library, progress, onExit, onFinish, onHidden }) {
   const card = deck[index]
   const category = library.categoryById[card?.categoryId]
   const cardProgress = (card && cards[card.id]) || {}
+  const alreadyPracticed = card ? practicedIds.has(card.id) : false
   const alreadySaid = card ? saidForReal.has(card.id) : false
+  const busy = Boolean(move) || editing
 
-  const leaveCard = (result, direction) => {
-    setResults((r) => [...r, result])
-    setExit(direction)
+  // step: +1 next card, -1 the one before. Swiping left goes forward, right goes back.
+  const go = (step, exit = step > 0 ? 'left' : 'right') => {
+    if (!card || busy) return
+    if (step < 0 && index === 0) return // nothing before the first card
     swipeHintSeen = true
     setShowHint(false)
+    setMove({ exit, step })
   }
 
-  const swipe = (dir) => {
-    if (!card || exit || editing) return
-    if (dir === 'right') {
-      practice(card.id, partner)
-      setEarned((e) => e + POINTS.practiced)
-      buzz(15)
-    }
-    leaveCard(dir === 'right' ? 'practiced' : 'skipped', dir)
-  }
-
-  const hide = () => {
-    if (!card || exit || editing) return
-    toggleHidden(card.id, true)
-    buzz(25)
-    onHidden(card.id)
-    leaveCard('hidden', 'down')
-  }
-
-  const advance = () => {
-    const next = index + 1
+  const finishMove = () => {
+    const { step } = move
+    const next = index + step
     if (next >= deck.length) {
-      onFinish({ deck, results, earned })
+      onFinish({ deck, practicedIds, buriedIds, earned })
       return
     }
-    setExit(null)
+    setEnterFrom(step > 0 ? 'right' : 'left')
+    setMove(null)
     setFlipped(false)
     setIndex(next)
+  }
+
+  const markPracticed = () => {
+    if (!card || busy || alreadyPracticed) return
+    practice(card.id, partner)
+    setPracticedIds((ids) => new Set(ids).add(card.id))
+    setEarned((e) => e + POINTS.practiced)
+    buzz(15)
+    setTimeout(() => go(1), PRACTICED_PAUSE_MS)
+  }
+
+  // 👍 toggles and stays on this card. 👎 buries it and moves on (with an Undo toast).
+  const like = () => {
+    if (!card || busy) return
+    const on = !cardProgress.liked
+    rateCard(card.id, on ? 'up' : null)
+    if (on) buzz(20)
+  }
+
+  const bury = () => {
+    if (!card || busy) return
+    const previous = cardProgress.liked ? 'up' : null
+    rateCard(card.id, 'down')
+    buzz(25)
+    setBuriedIds((ids) => new Set(ids).add(card.id))
+    onBuried(card.id, previous)
+    go(1, 'down')
   }
 
   const didItForReal = () => {
@@ -198,12 +215,12 @@ function Round({ info, deck, library, progress, onExit, onFinish, onHidden }) {
     if (on) buzz(20)
   }
 
-  // Keyboard for laptops: arrows swipe, space/enter flips.
+  // Keyboard for laptops: arrows move between cards, space/enter flips.
   useEffect(() => {
     const onKey = (e) => {
       if (editing || e.target.closest?.('button, input, textarea, [role="button"]')) return
-      if (e.key === 'ArrowRight') swipe('right')
-      else if (e.key === 'ArrowLeft') swipe('left')
+      if (e.key === 'ArrowRight') go(1)
+      else if (e.key === 'ArrowLeft') go(-1)
       else if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault()
         setFlipped((f) => !f)
@@ -214,6 +231,8 @@ function Round({ info, deck, library, progress, onExit, onFinish, onHidden }) {
   })
 
   if (!card) return null
+
+  const dots = deck.map((c) => (practicedIds.has(c.id) ? 'practiced' : buriedIds.has(c.id) ? 'hidden' : undefined))
 
   return (
     <div className="flex flex-1 flex-col">
@@ -253,7 +272,7 @@ function Round({ info, deck, library, progress, onExit, onFinish, onHidden }) {
       </div>
 
       <div className="mt-3">
-        <ProgressDots count={deck.length} index={index} results={results} color={info.color} />
+        <ProgressDots count={deck.length} index={index} results={dots} color={info.color} />
       </div>
 
       <div className="relative mt-3 min-h-[320px] flex-1">
@@ -264,26 +283,51 @@ function Round({ info, deck, library, progress, onExit, onFinish, onHidden }) {
           stats={cardProgress}
           customLine={cardProgress.customLine}
           mission={Boolean(cardProgress.mission)}
+          liked={Boolean(cardProgress.liked)}
+          practiced={alreadyPracticed}
+          atStart={index === 0}
+          enterFrom={enterFrom}
           flipped={flipped}
-          exit={exit}
+          exit={move?.exit ?? null}
           onFlip={() => setFlipped((f) => !f)}
-          onSwipe={swipe}
-          onExited={advance}
+          onSwipe={(dir) => go(dir === 'left' ? 1 : -1)}
+          onExited={finishMove}
           onEdit={() => setEditing(true)}
-          onHide={hide}
+          onLike={like}
+          onBury={bury}
         />
       </div>
 
       <p className="mt-3 h-5 text-center text-sm font-bold text-ink-soft" aria-hidden={!showHint}>
-        {showHint ? 'Swipe right if you practiced it, left to skip' : ''}
+        {showHint ? 'Swipe left and right to move between cards' : ''}
       </p>
 
-      <div className="mt-1 grid grid-cols-2 gap-3">
-        <button type="button" className="btn3d text-ink-soft" onClick={() => swipe('left')}>
-          <span aria-hidden="true">←</span> Skip
+      <div className="mt-1 grid grid-cols-[64px_1fr_64px] gap-3">
+        <button
+          type="button"
+          className="btn3d px-0 text-2xl text-ink-soft"
+          onClick={() => go(-1)}
+          disabled={index === 0}
+          aria-label="Card before this one"
+        >
+          ←
         </button>
-        <button type="button" className="btn3d" style={{ '--c': '#1fbf6a' }} onClick={() => swipe('right')}>
-          Practiced <span aria-hidden="true">→</span>
+        <button
+          type="button"
+          className="btn3d px-2 text-[1.15rem] disabled:opacity-100"
+          style={{ '--c': alreadyPracticed ? '#c7f0d8' : '#1fbf6a' }}
+          onClick={markPracticed}
+          disabled={alreadyPracticed}
+        >
+          {alreadyPracticed ? 'Practiced ✓' : 'Practiced +1'}
+        </button>
+        <button
+          type="button"
+          className="btn3d px-0 text-2xl text-ink-soft"
+          onClick={() => go(1)}
+          aria-label={index === deck.length - 1 ? 'Finish the deck' : 'Next card'}
+        >
+          →
         </button>
       </div>
 

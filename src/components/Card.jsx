@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { buzz, prefersReducedMotion } from '../lib/motion'
 
-const SWIPE_DISTANCE = 110 // px past which a release counts as a swipe
+const SWIPE_DISTANCE = 90 // px past which a release moves to the next or previous card
 const FLING_SPEED = 0.6 // px/ms: a quick flick counts even if shorter
 const LONG_PRESS_MS = 550
 const EXIT_MS = 280
@@ -14,13 +14,18 @@ export default function Card({
   stats,
   customLine,
   mission,
+  liked,
+  practiced,
+  atStart,
+  enterFrom,
   flipped,
   exit,
   onFlip,
   onSwipe,
   onExited,
   onEdit,
-  onHide,
+  onLike,
+  onBury,
 }) {
   const [drag, setDrag] = useState(REST)
   const gesture = useRef(null)
@@ -116,25 +121,27 @@ export default function Card({
     transform = `translate(${dir * (window.innerWidth + 200)}px, ${drag.y * 0.25 - 40}px) rotate(${dir * 28}deg)`
     transition = `transform ${EXIT_MS}ms cubic-bezier(0.45, 0, 0.9, 0.55)`
   } else if (drag.active) {
-    const tilt = Math.max(-18, Math.min(18, drag.x * 0.06))
-    transform = `translate(${drag.x}px, ${drag.y * 0.25}px) rotate(${tilt}deg)`
+    const x = atStart && drag.x > 0 ? drag.x * 0.35 : drag.x // nothing before the first card
+    const tilt = Math.max(-18, Math.min(18, x * 0.06))
+    transform = `translate(${x}px, ${drag.y * 0.25}px) rotate(${tilt}deg)`
     transition = 'none'
   } else {
     transform = 'translate(0px, 0px) rotate(0deg)'
     transition = 'transform 520ms cubic-bezier(0.34, 1.7, 0.5, 1)'
   }
 
-  const pull =
-    exit === 'down' ? 0 : exit ? (exit === 'right' ? 1 : -1) : Math.max(-1, Math.min(1, drag.x / SWIPE_DISTANCE))
   const line = customLine || card.line
+  const enterClass = enterFrom === 'right' ? 'card-in-right' : enterFrom === 'left' ? 'card-in-left' : 'card-enter'
 
   // Small round buttons on the card. They stop the press from starting a drag, flip, or long-press.
-  const iconButton = (face, label, icon, onClick) => (
+  // pressed: undefined for plain buttons, true/false for toggles like 👍.
+  const iconButton = (face, label, icon, onClick, pressed) => (
     <button
       type="button"
       tabIndex={(face === 'back') === flipped ? 0 : -1}
       aria-label={label}
-      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/85 text-xl text-ink shadow-[0_2px_0_rgb(22_24_58/0.12)] transition-transform active:scale-90"
+      aria-pressed={pressed}
+      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-xl text-ink shadow-[0_2px_0_rgb(22_24_58/0.12)] transition-transform active:scale-90 ${pressed ? 'bg-gold ring-2 ring-ink' : 'bg-white/85'}`}
       onPointerDown={(e) => e.stopPropagation()}
       onClick={(e) => {
         e.stopPropagation()
@@ -146,7 +153,7 @@ export default function Card({
   )
 
   return (
-    <div className="card-enter absolute inset-0">
+    <div className={`${enterClass} absolute inset-0`}>
       <div
         role="button"
         tabIndex={0}
@@ -176,14 +183,17 @@ export default function Card({
                   </span>
                 )}
               </div>
-              {iconButton('front', 'Hide this card', '👎', onHide)}
+              <div className="flex shrink-0 gap-2">
+                {iconButton('front', 'I like this card', '👍', onLike, Boolean(liked))}
+                {iconButton('front', 'Bury this card', '👎', onBury)}
+              </div>
             </div>
             <div className="flex flex-1 flex-col justify-center">
               <p className="text-sm font-bold tracking-widest text-ink-soft uppercase">When…</p>
               <p className="mt-2 font-display text-[34px] leading-[1.08]">{card.situation}</p>
             </div>
             <div className="flex items-center justify-between text-sm font-bold text-ink-soft">
-              <span>Tap to flip</span>
+              <span>{practiced ? '✓ Practiced just now' : 'Tap to flip'}</span>
               <span>
                 Practiced {stats.practiced || 0} · Real {stats.usedForReal || 0}
               </span>
@@ -196,7 +206,8 @@ export default function Card({
                 {customLine ? 'In your words' : 'Try this'}
               </p>
               <div className="flex gap-2">
-                {iconButton('back', 'Hide this card', '👎', onHide)}
+                {iconButton('back', 'I like this card', '👍', onLike, Boolean(liked))}
+                {iconButton('back', 'Bury this card', '👎', onBury)}
                 {iconButton('back', 'Write it your way', '✏️', onEdit)}
               </div>
             </div>
@@ -219,18 +230,12 @@ export default function Card({
           </div>
         </div>
 
-        <span className="stamp left-5 -rotate-12 text-[#0d8a49]" style={{ opacity: Math.max(0, pull) }} aria-hidden="true">
-          Practiced!
-        </span>
-        <span className="stamp right-5 rotate-12 text-ink-soft" style={{ opacity: Math.max(0, -pull) }} aria-hidden="true">
-          Skip
-        </span>
         <span
           className="stamp left-1/2 -translate-x-1/2 -rotate-6 text-rose-600"
           style={{ opacity: exit === 'down' ? 1 : 0 }}
           aria-hidden="true"
         >
-          👎 Hidden
+          👎 Buried
         </span>
       </div>
     </div>

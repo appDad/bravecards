@@ -2,22 +2,23 @@ import Avatar from './Avatar'
 import PointsCounter from './PointsCounter'
 
 // Decks can hold hundreds of cards, so this shows deck progress, the cards this kid
-// has actually used, and the hidden ones (with a way to bring them back).
+// has used or 👍'd, and the 👎 buried ones (with a way to bring them back).
 export default function TrophyRoom({ library, progress, onBack }) {
-  const { kid, cards, streak, toggleHidden } = progress
+  const { kid, cards, streak, rateCard } = progress
   const { allCards, categories, categoryById } = library
   const p = (card) => cards[card.id] ?? {}
   const sum = (field) => allCards.reduce((total, card) => total + (p(card)[field] || 0), 0)
 
   const visible = allCards.filter((card) => !p(card).hidden)
-  const hidden = allCards.filter((card) => p(card).hidden)
+  const buried = allCards.filter((card) => p(card).hidden)
   const used = visible
-    .filter((card) => p(card).practiced || p(card).usedForReal || p(card).mission || p(card).customLine)
+    .filter((card) => p(card).practiced || p(card).usedForReal || p(card).mission || p(card).liked || p(card).customLine)
     .sort(
       (a, b) =>
         (p(b).usedForReal || 0) - (p(a).usedForReal || 0) ||
         (p(b).practiced || 0) - (p(a).practiced || 0) ||
-        Number(Boolean(p(b).mission)) - Number(Boolean(p(a).mission)),
+        Number(Boolean(p(b).mission)) - Number(Boolean(p(a).mission)) ||
+        Number(Boolean(p(b).liked)) - Number(Boolean(p(a).liked)),
     )
 
   return (
@@ -92,7 +93,7 @@ export default function TrophyRoom({ library, progress, onBack }) {
         <h2 className="font-display text-2xl">Your cards</h2>
         {used.length === 0 ? (
           <p className="mt-3 rounded-2xl border-2 border-dashed border-ink/15 p-4 text-center text-ink-soft">
-            Practice a card and it shows up here.
+            Practice or 👍 a card and it shows up here.
           </p>
         ) : (
           <ul className="mt-3 flex flex-col gap-2">
@@ -107,6 +108,7 @@ export default function TrophyRoom({ library, progress, onBack }) {
                 >
                   <div className="min-w-0 flex-1">
                     <p className="leading-snug font-bold">
+                      {progressOf.liked && <span aria-label="Liked">👍 </span>}
                       {progressOf.mission && <span aria-label="Mission">🎯 </span>}
                       {progressOf.customLine || card.line}
                     </p>
@@ -126,16 +128,16 @@ export default function TrophyRoom({ library, progress, onBack }) {
         )}
       </section>
 
-      {hidden.length > 0 && (
+      {buried.length > 0 && (
         <details className="group mt-7">
           <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between rounded-2xl bg-white/70 px-4 font-display text-xl">
-            <span>👎 Hidden cards ({hidden.length})</span>
+            <span>👎 Buried cards ({buried.length})</span>
             <span className="transition-transform group-open:rotate-180" aria-hidden="true">
               ▾
             </span>
           </summary>
           <ul className="mt-2 flex flex-col gap-2">
-            {hidden.map((card) => (
+            {buried.map((card) => (
               <li key={card.id} className="flex items-center gap-3 rounded-2xl bg-white p-3">
                 <div className="min-w-0 flex-1 opacity-70">
                   <p className="leading-snug font-bold">{p(card).customLine || card.line}</p>
@@ -145,10 +147,10 @@ export default function TrophyRoom({ library, progress, onBack }) {
                 </div>
                 <button
                   type="button"
-                  onClick={() => toggleHidden(card.id, false)}
+                  onClick={() => rateCard(card.id, null)}
                   className="min-h-11 shrink-0 rounded-full bg-sky px-4 text-sm font-bold transition-transform active:scale-95"
                 >
-                  Show again
+                  Bring back
                 </button>
               </li>
             ))}

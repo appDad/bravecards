@@ -1,4 +1,4 @@
-// One dot per card: filled for practiced, faded for skipped or hidden, wide for the current card.
+// One dot per card: filled for practiced, faded for skipped or buried, wide for the current card.
 export default function ProgressDots({ count, index, results, color }) {
   return (
     <div className="flex items-center justify-center gap-1.5" aria-label={`Card ${Math.min(index + 1, count)} of ${count}`}>

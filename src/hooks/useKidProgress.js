@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { logPractice, saveCustomLine, setHidden, setMission, subscribeKid, subscribeKidCards } from '../lib/store'
+import { logPractice, saveCustomLine, setMission, setRating, subscribeKid, subscribeKidCards } from '../lib/store'
 import { currentStreak } from '../lib/streak'
 
 const logError = (error) => console.error(error)
@@ -45,8 +45,8 @@ export default function useKidProgress(familyCode, kidId) {
     (cardId, on) => setMission(familyCode, kidId, cardId, on).catch(logError),
     [familyCode, kidId],
   )
-  const toggleHidden = useCallback(
-    (cardId, hidden) => setHidden(familyCode, kidId, cardId, hidden).catch(logError),
+  const rateCard = useCallback(
+    (cardId, rating) => setRating(familyCode, kidId, cardId, rating).catch(logError),
     [familyCode, kidId],
   )
   const saveLine = useCallback(
@@ -65,7 +65,7 @@ export default function useKidProgress(familyCode, kidId) {
     practice,
     sayForReal,
     toggleMission,
-    toggleHidden,
+    rateCard,
     saveLine,
   }
 }
