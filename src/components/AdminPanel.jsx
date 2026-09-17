@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
-import { ADMIN_EMAIL, auth, authErrorMessage, isAdminUser, signInAdmin, signOutAdmin } from '../lib/admin'
+import { auth, authErrorMessage, isAdminUser, signInAdmin, signOutAdmin } from '../lib/admin'
 import { createFamily, deleteFamily, renameFamily, subscribeFamilies } from '../lib/store'
 import { MAX_CODE, MIN_CODE } from './CodePad'
 import Sheet from './Sheet'
@@ -50,7 +50,6 @@ export default function AdminPanel({ onExit, onOpenFamily }) {
       {user === null && (
         <div className="mt-10 flex flex-col items-center gap-4 rounded-[28px] bg-white p-6 text-center">
           <p className="font-display text-2xl">Manage family codes</p>
-          <p className="text-ink-soft">Only {ADMIN_EMAIL} can sign in here.</p>
           <button type="button" onClick={signIn} className="btn3d w-full" style={{ '--c': '#ffc833' }}>
             <GoogleIcon /> Sign in with Google
           </button>
@@ -61,7 +60,7 @@ export default function AdminPanel({ onExit, onOpenFamily }) {
         <div className="mt-10 rounded-[28px] bg-white p-6 text-center">
           <p className="font-display text-2xl">Not an admin account</p>
           <p className="mt-2 text-ink-soft">
-            You're signed in as {user.email}. Sign out and use {ADMIN_EMAIL}.
+            You're signed in as {user.email}, which can't manage family codes.
           </p>
         </div>
       )}
